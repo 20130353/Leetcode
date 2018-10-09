@@ -2,7 +2,7 @@
 # Author: sunmengxin
 # time: 10/8/18
 # file: BST.py
-# description:
+# description: binary search tree
 
 import numpy as np
 

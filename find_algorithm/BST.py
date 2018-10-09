@@ -18,9 +18,9 @@ class BST:
 
     def search_node(self,T,parent,data):
         if T == None:
-            return False,node,parent
+            return False,T,parent
         if T.data == data:
-            return True,node,parent
+            return True,T,parent
         if T.data < data:
             return self.search_node(T.rchild,T,data)
         else:
@@ -41,22 +41,47 @@ class BST:
         for i in range(1,len(data)):
              self.T = self.insert_node(self.T,data[i])
 
-    # def delete(self,root,data):
-    #     flag,P,F = self.search_node(T,data)
-    #     if P.lchild == None and P.rchild != None:
-    #         T.rchild =
-    #
-    #     return
+    def delete(self,T,data):
+        # CN is current node with data
+        # PN is the parent node of the current node
+        flag,CN,PN = self.search_node(self.T,self.T,data)
 
-    def delete_node(self,data):
-        if self.T.data == data:
-            self.delete(self.T,data)
-        elif self.T.data < data:
-            self.delete_node(self.T.rchild)
+        if CN.rchild == None and CN.lchild == None:
+            if CN == PN.lchild:
+                PN.lchild = None
+            else:
+                PN.rchild = None
+
+        if CN.lchild == None and CN.rchild != None:
+            if CN == PN.lchild:
+                PN.lchild = CN.rchild
+            else:
+                PN.rchild = CN.rchild
+        if CN.rchild == None and CN.lchild != None:
+            if CN == PN.lchild:
+                PN.lchild = CN.lchild
+            else:
+                PN.rchild = CN.lchild
         else:
-            self.delete_node(self.t.lchild)
+            front_node = T.lchild
+            while(front_node.rchild != None):
+                front_node  = front_node.rchild
 
+            T.data = front_node.data
+            # if T != T.lchild:
+            T.lchild.rchild = front_node.lchild
+            # else:
+            #     T.lchild.lchild = front_node.lchild
+            del front_node
+        return
 
+    def delete_node(self,T,data):
+        if T.data == data:
+            self.delete(T,data)
+        elif T.data < data:
+            self.delete_node(T.rchild,data)
+        else:
+            self.delete_node(T.lchild,data)
 
     def preorder_traverse(self,T):
         if T != None:
@@ -81,4 +106,9 @@ if __name__ == '__main__':
     data = [62,58,88,47,73,99,35,51,93,29,37,49,56,36,48,50]
     Tree = BST()
     Tree.build_Tree(data)
+    print('one:')
+    Tree.inorder_traverse(Tree.T)
+
+    print('\ntwo')
+    Tree.delete_node(Tree.T,47)
     Tree.inorder_traverse(Tree.T)

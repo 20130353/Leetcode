@@ -78,6 +78,26 @@ class AVL:
         for each in data:
             self.T = self.insert_node(self.T,each)
 
+    def delete_node(self,T,data):
+        if T.rchild != None and T.rchild == data:
+            T.rchild = None
+            return T
+        if T.lchild != None and T.lchild == data:
+            T.lchild = None
+            return T
+        else:
+
+            # front_node = T.lchild
+            # while (front_node.rchild != None):
+            #     front_node = front_node.rchild
+            #
+            # T.data = front_node.data
+            # T.lchild.rchild = front_node.lchild
+    #         uncomplete !!!!!!!!!!!!!!!!!!!!
+
+            return
+
+
     def preorder_traverse(self, T):
         if T != None:
             print(T.data)

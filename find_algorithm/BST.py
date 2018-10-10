@@ -68,10 +68,7 @@ class BST:
                 front_node  = front_node.rchild
 
             T.data = front_node.data
-            # if T != T.lchild:
             T.lchild.rchild = front_node.lchild
-            # else:
-            #     T.lchild.lchild = front_node.lchild
             del front_node
         return
 

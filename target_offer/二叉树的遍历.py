@@ -99,16 +99,35 @@ class BST:
             self.postorder_traverse(T.rchild)
             print(T.data)
 
+
+    # 先序遍历--栈
     def preorder_stack(self,T):
         if T == None:
             return
         stack = [T]
-        while (len(stack) >0):
-            cnt = stack.pop()
-            if cnt != None:
-                print(cnt.data)
-                stack.append(cnt.rchild)
-                stack.append(cnt.lchild)
+        while (len(stack) > 0 and p != None):
+            while (p.lchild != None):
+                print(p.lchild.data)
+                stack.append(p.lchild)
+                p = p.lchild
+            # there is no left node of tree
+            node = stack.pop()
+            # then watch the right node of tree
+            stack.append(node.rchild)
+
+    def inorder_Stack(self, T):
+        if T == None:
+            return
+        stack = []
+        p = T
+        while (len(stack) > 0 and p != None):
+            # until there is no left node of tree
+            while (p.lchild != None):
+                stack.append(p.lchild)
+                p = p.lchild
+            top = stack.pop()
+            print(top.data)
+            stack.append(T.rchild)
 
     def postorder_stack(self,T):
         if T == None:
@@ -116,26 +135,29 @@ class BST:
         stack = [T]
         record = []
         while (len(stack) >0):
-            record.append(stack.pop())
-            if cnt != None:
-                stack.append(cnt.rchild)
-                stack.append(cnt.lchild)
+            node = stack.pop()
+            record.append(node)
+            if node.rchild:
+                stack.append(node.rchild)
+            if node.lchild:
+                stack.append(node.lchild)
 
-        for each in record:
+        for each in range(len(record)-1,0,-1):
             print(each.data)
 
-    def inorder_Stack(self,T):
+
+    def level_stack(self,T):
         if T == None:
             return
-        stack = []
-        p = T
-        while(len(stack) > 0 and p != None):
-            while(p.lchild != None):
-                stack.append(p.lchild)
-                p = p.lchild
-            top = stack.pop()
-            print(top.data)
-            p = T.rchild
+        queue = [T]
+        while(len(queue)>0):
+            node = queue.pop()
+            print(node.data)
+            if node.lchild:
+                queue.append(node.lchild)
+            if node.rchild:
+                queue.append(node.rchild)
+
 
 
 if __name__ == '__main__':
@@ -145,6 +167,6 @@ if __name__ == '__main__':
     Tree.build_Tree(data)
     Tree.preorder_stack(Tree.T)
 
-
+[abcdf][abce].[^mj]
 
 

@@ -166,7 +166,3 @@ if __name__ == '__main__':
     Tree = BST()
     Tree.build_Tree(data)
     Tree.preorder_stack(Tree.T)
-
-[abcdf][abce].[^mj]
-
-

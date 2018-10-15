@@ -7,51 +7,32 @@
 import numpy as np
 import copy
 
-
-# why low != right
-# when low = right, the element of data[left] would be changed twice, one time for low and another for high
-def quick_sort(data,left,right):
-    if left >= right:
+# 只有这一种写法是正确的!
+def quick_sort(data,low,high):
+    if low >= high:
         return data
 
-    low = left
-    high = right
-
-    key = data[low] # save the key
+    low_save = low
+    high_save = high
+    key = data[low]
     while(low < high):
 
-        try:
-            # because data[low] has been saved before and data[low] could be landed
-            # find first element with lower value than key
-            while(data[high] >= key and low < high):
-                high -= 1
+        while(low < high and data[high] >= key):
+            high -= 1
+        if low < high:
             data[low] = data[high]
 
-        except Exception:
-            print('low',low)
-            print('high',high)
-
-        try:
-            # find first element with bigger value than key
-            while(data[low] <= key and low < high):
-                low += 1
+        while(low < high and data[low] < key):
+            low += 1
+        if low < high:
             data[high] = data[low]
-        except Exception:
-            print('low',low)
-            print('high',high)
 
-    data[low] = key
-    print('===================')
-    print('left',left)
-    print('right',right)
-    print('key',key)
-    print(data)
-    quick_sort(data,left,low - 1)
-    quick_sort(data,low + 1,right)
+    data[high] = key
+    quick_sort(data,low_save,low)
+    quick_sort(data,low+1,high_save)
     return data
 
-
 if __name__ == '__main__':
-    data = np.random.rand(10)
+    data = [1,4,5,6,3,2,7,9,0]
     data = quick_sort(data,0,len(data)-1)
     print(data)

@@ -9,8 +9,9 @@ import math
 import copy as cp
 
 if __name__ == '__main__':
-    n,m = input().split()
-    n,m = int(n), int(m)
+
+    n, m = input().split()
+    n, m = int(n), int(m)
 
     map = [[math.inf for _ in range(n)] for _ in range(n)]
     for i in range(n):
@@ -21,7 +22,7 @@ if __name__ == '__main__':
     for _ in range(m):
         x = input()
         # print(x.replace(' ','_'))
-        a,b,w = x.split(' ')
+        a, b, w = x.split(' ')
         map[int(a)][int(b)] = int(w)
         map[int(b)][int(a)] = int(w)
 

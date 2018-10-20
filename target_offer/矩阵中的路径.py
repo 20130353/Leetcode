@@ -27,8 +27,6 @@ def DFS(map, vis, str, i, j, index, flag):
             vis[next_i][next_j] = 0
 
 
-
-
 if __name__ == '__main__':
     map = [['a', 'b', 'c', 'e'], ['s', 'f', 'c', 's'], ['a', 'd', 'e', 'e']]
     map_n, map_m = len(map), len(map[0])

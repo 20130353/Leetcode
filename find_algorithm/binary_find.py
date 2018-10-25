@@ -3,27 +3,25 @@
 # time: 10/8/18
 # file: binary_find.py
 # description:
-import numpy as np
+
 def binary_find(data,v):
 
     low = 0
     high = len(data) - 1
-    while(low < high):
-        mid = np.int((low+high)/2)
-
+    while(low <= high):
+        mid = int((low+high)/2)
         if data[mid] == v:
-            flag = True
             return mid
         if data[mid] < v:
-            low = mid
-        elif data[mid] > v:
-            high = low
+            low = mid + 1
+        else:
+            high = mid - 1 # 二分查找一定要排除中间的mid
     return -1
 
 
 if __name__ == '__main__':
-    data = np.random.rand(10)
+    data = [1,2,3,4,5,6,7,8,8,8,8,9]
     data = sorted(data)
-    inx = binary_find(data,data[7])
+    inx = binary_find(data,8)
     print(inx)
 

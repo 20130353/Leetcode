@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 # Author: sunmengxin
 # time: 10/26/18
-# file: 员工的重要性.py
+# file: employee_importanc e.py
 # description:
+
+'''
+    收获是用dict代替树结构
+'''
 
 '''
 给定一个保存员工信息的数据结构，它包含了员工唯一的id，重要度 和 直系下属的id。

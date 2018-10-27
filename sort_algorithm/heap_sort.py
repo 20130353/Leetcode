@@ -12,15 +12,19 @@ import copy
 # 调整堆只要调整所有的父节点,使父节点是最大值就好
 def build_heap(data):
     last_father = np.int(len(data)/2)
+    # 构造堆是底部的孩子节点开始的
+    # 从孩子节点开始向上浮动最大值
     for i in range(last_father,-1,-1):
         adjust_heap(data,i,len(data))
 
-# # 从底部将最大值上浮到父节点
-# # 树调整的过程是递归的,因为左右孩子节点的值会影响父节点的值.
-# # 调整的时候,当前的节点以及当前的所有父节点会经历一次最大值向上的排序
-#
+# 构造和调整的过程完全相反,构造是从底部开始调整
+# 调整就是从根节点开始
+# 构造和调整的关系是构造每个节点时就从当前节点开始调整堆
 # 递归方式
 def adjust_heap(data, i, size):
+
+    # 从根节点开始排,一直到底部孩子节点
+    # max最后的结果是孩子节点
     left = 2 * i + 1
     right = 2 * i + 2
     max = i
@@ -54,6 +58,7 @@ def adjust_heap(data, i, size):
 def heap_sort(data):
     build_heap(data)
     for i in range(len(data)-1,0,-1):
+        # data[0]是最大元素, data[i]是当前的最小元素
         data[0],data[i] = data[i],data[0]
         adjust_heap(data,0,i)
 

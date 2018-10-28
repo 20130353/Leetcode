@@ -21,10 +21,12 @@ def fun(stack,output,origin):
         stack.append(origin.pop())
         fun(stack,output,origin)
         origin.append(stack.pop()) #恢复现场
+
     elif len(stack) and len(origin) == 0:
         output.append(stack.pop())
         fun(stack,output,origin)
         stack.append(output.pop())# 恢复现场
+
     elif len(stack) == 0 and len(origin):
         stack.append(origin.pop())
         fun(stack,output,origin)

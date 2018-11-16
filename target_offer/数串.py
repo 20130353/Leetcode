@@ -90,8 +90,12 @@ def cmp(a,b):
 
 # 标准代码
 if __name__ == '__main__':
-    n = int(input().strip())
-    arr = input().strip().split(' ')
-    arr = sorted(arr,key=functools.cmp_to_key(cmp),reverse=True)
-    print(''.join(arr))
+    # n = int(input().strip())
+    # arr = input().strip().split(' ')
+    # arr = sorted(arr,key=functools.cmp_to_key(cmp),reverse=True)
+    # print(''.join(arr))
+
+
+    dict = {1:5}
+    print(dict[1])
 

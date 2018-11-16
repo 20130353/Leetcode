@@ -30,21 +30,43 @@ def solution1(a,p):
             return 1/res
     return
 
-def solution2(a,p):
 
-    if a == 0:
-        return 0
-    if p == 0:
-        return 1
-    if p == 1:
-        return a
-    if p & 1 == 0:
-        return solution2(a,p//2) * solution2(a,p//2)
-    else:
-        return solution2(a,p//2) * solution2(a,p//2) * a
+# 这个代码有问题！ 没有考虑到负数
+# def solution2(a,p):
+    #
+    # if a == 0:
+    #     return 0
+    # if p == 0:
+    #     return 1
+    # if p == 1:
+    #     return a
+    # if p & 1 == 0:
+    #     return solution2(a,p//2) * solution2(a,p//2)
+    # else:
+    #     return solution2(a,p//2) * solution2(a,p//2) * a
+
+# 这是正确的代码
+# -*- coding:utf-8 -*-
+class Solution:
+
+    def Power(self, base, exponent):
+        # write code here
+
+        if base == 0:
+            return 0
+        if exponent == 0:
+            return 1
+        if exponent == 1:
+            return base
+        if exponent < 0:
+            if -exponent & 1 == 0:
+                return 1 / (self.Power(base, -exponent // 2) * self.Power(base, -exponent // 2))
+            else:
+                return 1 / (self.Power(base, -exponent // 2) * self.Power(base, -exponent // 2) * base)
+        else:
+            if exponent & 1 == 0:  # 偶数
+                return self.Power(base, exponent // 2) * self.Power(base, exponent // 2)
+            else:  # 奇数
+                return self.Power(base, exponent // 2) * self.Power(base, exponent // 2) * base
 
 if __name__ == '__main__':
-
-    a,power = 3,1
-    res = solution2(a,power)
-    print(res)

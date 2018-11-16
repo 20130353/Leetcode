@@ -19,29 +19,30 @@
 
 import numpy as np
 
-def matrix_search(data,key):
-
-    if data == None or len(data) == 0 or type(key).__name__ not in ['float','int','int64','long','complex']:
-        return False
-    data = np.array(data)
-    rows,cols = data.shape
-    i = 0
-    j = cols - 1
-
-    while( j>=0 and i <rows):
-        if type(data[i,j]).__name__ not in ['float','int','int64','long','complex']:
-            print('the type of value should be \'float\' or \'int\'')
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        # write code here
+        if len(array) == 0:
             return False
 
-        if data[i,j] > key:
-            j -= 1
-        elif data[i,j] < key:
-            i += 1
-        else:
-            return True
-    return False
+        max_i, min_j = len(array) - 1, 0
+        i, j = 0, len(array[0]) - 1
+        while (True):
+            while i <= max_i and array[i][j] < target:
+                i += 1
+            if i > max_i:
+                return False
+            if array[i][j] == target:
+                return True
 
+            while j >= min_j and array[i][j] > target:
+                j -= 1
 
+            if j < min_j:
+                return False
+            if array[i][j] == target:
+                return True
 
 
 if __name__ == '__main__':
@@ -59,11 +60,15 @@ if __name__ == '__main__':
               [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84],
               [67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]]
 
-    print(matrix_search(array, 10))
-    print(matrix_search(array, 30))
-    print(matrix_search(array, 13.0))
-    print(matrix_search(array, ''))
-    print(matrix_search(array2, 10))
-    print(matrix_search(array3, 'b'))
-    print(matrix_search(array4, 81))
+    # print(matrix_search(array, 10))
+    # print(matrix_search(array, 30))
+    # print(matrix_search(array, 13.0))
+    # print(matrix_search(array, ''))
+    # print(matrix_search(array2, 10))
+    # print(matrix_search(array3, 'b'))
+    # print(matrix_search(array4, 81))
 
+    # so = Solution()
+    # print(so.Find(20, array4))
+
+    print([1,2,3][::-1])

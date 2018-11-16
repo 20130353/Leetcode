@@ -52,9 +52,10 @@ def count(n):
 # 因为在Python中，对于超出32位的大整数，会自动进行大整数的转变，这就导致了在右移位过程中，
 # 不会出现移到了0的情况，也就会造成了死循环。
 # 在python中，负数和0xffffffff按位与之后变成一个无符号数，二进制表示为编码形式
+# 重点！！！！！
 def NumberOf1(n):
     count = 0
-    while n&0xffffffff != 0:
+    while n & 0xffffffff != 0:
         count += 1
         n = n & (n-1)
     return count

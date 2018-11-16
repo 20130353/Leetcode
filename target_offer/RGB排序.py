@@ -17,6 +17,7 @@ def sort_RGB(str):
         return str
 
     j=len(str)-1
+
     while str[j] == 'B' and j >= 0:
         j -= 1
     if j <= 0:

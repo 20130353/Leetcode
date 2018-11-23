@@ -8,37 +8,56 @@
     给定一个棋盘,要求机器人只能走上下左右的方向,不能进入到坐标之和等与s的方格,求机器人能进入多少方格?
 '''
 
-dir = [[0,1],[0,-1],[1,0],[-1,0]]
-def DFS(map,i,j,s,count):
-    n = len(map)
-    for k in range(4):
-        next_i = i + dir[k][0]
-        next_j = j + dir[k][1]
+'''
+    反思：
+        1. 自定义的变量需要在init初始话函数中声明
+        2. 函数传递参数记得数好，代码检查要检查好！
+        3. 边界，看清是从1开始还是从0开始的！
+        
 
-        sum_ij = bit_sum(next_i) + bit_sum(next_j)
-        if next_i>=0 and next_i < n and next_j >=0 and next_j < n and map[next_i][next_j] == 0 and sum_ij != s:
-            map[next_i][next_j] = 1
-            count[0] += 1
-            DFS(map,next_i,next_j,s,count)
+'''
 
-def bit_sum(a):
-    if a < 10:
-        return a
-    else:
-        s = 0
-        while(a):
-            s += a%10
-            a /= 10
-    return s
+
+# -*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
+class Solution:
+
+    def __init__(self):
+        self.dir = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
+    def get_sum(self, a, b):
+        if a < 10:
+            sum_a = a
+        else:
+            sum_a = sum(list(map(int, str(a))))
+        if b < 10:
+            sum_b = b
+        else:
+            sum_b = sum(list(map(int, str(b))))
+        return sum_a + sum_b
+
+    def DFS(self, th, sum_, i, j, m, n, vis):
+
+        for k in range(4):
+            ni = i + self.dir[k][0]
+            nj = j + self.dir[k][1]
+            if ni >= 0 and nj >= 0 and ni < m and nj < n and not vis[ni][nj] and self.get_sum(ni, nj) <= th:
+                vis[ni][nj] = True
+                sum_[0] = sum_[0] + 1
+                self.DFS(th, sum_, ni, nj, m, n, vis)
+
+    def movingCount(self, threshold, rows, cols):
+        # write code here
+        vis = [[False for _ in range(cols)] for _ in range(rows)]
+        sum_ = [0]
+        if threshold > 0:
+            sum_[0] = 1
+            vis[0][0] = True
+            self.DFS(threshold, sum_, 0, 0, rows, cols, vis)
+
+        return sum_[0]
+
 
 if __name__ == '__main__':
-
-    n,s = input().split()
-    n,s = int(n),int(s)
-
-    map = [[0 for _ in range(n)] for _ in range(n)]
-
-    map[0][0] = 1
-    count = [1]
-    DFS(map,0,0,s,count)
-    print(count[0])
+    so = Solution()
+    print(so.movingCount(15, 20, 20))

@@ -42,6 +42,7 @@ class Solution:
     #         return self.stack2.pop()
     #     return  self.stack1.pop()
 
+    # 这个方法有错！
     def pop(self):
         # return xx
         if self.stack1 == [] and self.stack2 == []:

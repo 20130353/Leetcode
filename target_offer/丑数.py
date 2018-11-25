@@ -11,27 +11,35 @@
     这里实现第三种解法
 '''
 
-def solution(index):
-    if index == None or index <= 0:
-        return 0
-    num = [1 for _ in range(index)]
-    next_index = 1
-    index2 = 0
-    index3 = 0
-    index5 = 0
-    while next_index < index:
-        min_v = min([num[index2]*2,num[index3]*3,num[index5]*5])
-        num[next_index] = min_v
-        while num[index2] * 2 <= min_v:
-            index2 += 1
-        while num[index3] * 3 <= min_v:
-            index3 += 1
-        while num[index5] * 5 <= min_v:
-            index5 += 1
-        next_index += 1
-    return num[-1]
+
+
+# 反思：
+# 1. 代码的每个相似变量的检查
+class Solution:
+    def GetUglyNumber_Solution(self, index):
+        # write code here
+        if index <= 0:
+            return 0
+        res = [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15]
+        if index < 11:
+            return res[index - 1]
+
+        index2, index3, index5 = 0, 0, 0
+        next_index = 1
+        res = [1 for _ in range(index)]
+        while next_index < index:
+            next_value = min(res[index2] * 2, res[index3] * 3, res[index5] * 5)
+            res[next_index] = next_value
+            while res[index2] * 2 <= next_value:
+                index2 += 1
+            while res[index3] * 3 <= next_value:
+                index3 += 1
+            while res[index5] * 5 <= next_value:
+                index5 += 1
+            next_index += 1
+        return res[-1]
 
 if __name__ == '__main__':
 
-    res = solution(9)
-    print('第1500个丑数是:',res)
+    so = Solution()
+    print('第1500个丑数是:',so.GetUglyNumber_Solution(11))

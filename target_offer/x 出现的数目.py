@@ -10,41 +10,39 @@
     这里实现第二种解法
 '''
 
-import math
 
-def solution(n,x):
+class Solution:
+    def NumberOf1Between1AndN_Solution(self, n):
+        # write code here
+        import math
+        target = 1
 
-    if n < 0 or x < 0 or x > 9:
-        return 0
+        if n <= 0 or target < 0 or target > 9:
+            return 0
 
-    tmp = n
-    bits = 0
-    while tmp:
-        tmp //= 10
-        bits += 1
+        bits = 0
+        temp = n
+        while temp:
+            bits += 1
+            temp //= 10
 
-    total = 0
-    for i in range(1,bits+1):
-        high = n//math.pow(10,i)
-        low = (n%math.pow(10,i))%math.pow(10,i-1)
-        cut = (n//math.pow(10,i-1)) - (n//math.pow(10,i))*10
-        if cut == x:
-            total += high * math.pow(10,i-1) + low + 1
-        elif cut < x:
-            total += high * math.pow(10,i-1)
-        else:
-            total += (high+1) * math.pow(10,i-1)
+        total = 0
+        for i in range(1, bits + 1):
+            high = n // math.pow(10, i)
+            low = (n % math.pow(10, i)) % math.pow(10, i - 1)
+            cut = (n // math.pow(10, i - 1)) - (n // math.pow(10, i)) * 10
+            if cut == target:
+                total += high * math.pow(10, i - 1) + low + 1
+            elif cut < target:
+                total += high * math.pow(10, i - 1)
+            else:
+                total += (high + 1) * math.pow(10, i - 1)
 
-        # print(total,end='\t')
-    return total
+        return total
+
 
 if __name__ == '__main__':
-
-    count = solution(2593,5)
+    count = solution(2593, 5)
     print(count)
 
     # print(259+260+294)
-
-
-
-

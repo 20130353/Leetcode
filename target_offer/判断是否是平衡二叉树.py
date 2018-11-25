@@ -1,21 +1,11 @@
 # -*- coding: utf-8 -*-
-# Author: sunmengxin
-# time: 10/20/18
-# file: 二叉树的深度.py
+# author: sunmengxin
+# time: 18-11-25
+# file: 判断是否是平衡二叉树
 # description:
 
-'''
-    求二叉树的深度有两种解法:
-    递归: 返回左右节点的最大深度 + 当前深度1
-    非递归: 用二叉树的层次遍历,返回深度
-'''
 
-
-# 反思：
-# 1. list的pop是可以接受参数
-# 默认的list.pop() == list.pop(-1)
-# 如果想要删除的是第一个用 list.pop(0)
-
+# 反思：空树是平衡二叉树
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -25,19 +15,9 @@ class TreeNode:
 
 class Solution:
 
-    # 递归的方式
-    def TreeDepth(self, pRoot):
-        # write code here
-        if not pRoot:
-            return 0
-        else:
-            return max(self.TreeDepth(pRoot.left), self.TreeDepth(pRoot.right)) + 1
-
-    # 栈的方式
     def Stack_TreeDepth(self, pRoot):
         if not pRoot:
             return 0
-
         queue = [pRoot]
         count = 0
         while queue:
@@ -52,6 +32,18 @@ class Solution:
                     queue.append(cur.right)
                 size -= 1
         return count
+
+
+    def IsBalanced_Solution(self, pRoot):
+        # write code here
+        if not pRoot:
+            return False
+        left_height = self.Stack_TreeDepth(pRoot.left)
+        right_height = self.Stack_TreeDepth(pRoot.right)
+        if abs(left_height - right_height) <= 1:
+            return True
+        else:
+            return False
 
 
 if __name__ == '__main__':
@@ -71,5 +63,6 @@ if __name__ == '__main__':
     Node3.right = Node7
 
     so = Solution()
-    max_deepth = so.Stack_TreeDepth(root)
+    max_deepth = so.IsBalanced_Solution(root)
     print(max_deepth)
+

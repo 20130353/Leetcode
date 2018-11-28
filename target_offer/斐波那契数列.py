@@ -36,6 +36,14 @@ class Solution:
             return F[n]
 
 
+
+# LRU 删除最远不会被访问到的元素,当内存满了的话,直接删除最远的元素
+# 双链表
+
+
+
+
+
 if __name__ == '__main__':
     so = Solution()
     print(so.Fibonacci(30))

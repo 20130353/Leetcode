@@ -15,6 +15,7 @@ class ListNode:
 
 
 class Solution:
+
     def FindFirstCommonNode(self, pHead1, pHead2):
         # write code here
         if not pHead1 or not pHead2:

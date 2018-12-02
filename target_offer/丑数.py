@@ -12,14 +12,15 @@
 '''
 
 
-
 # 反思：
 # 1. 代码的每个相似变量的检查
 class Solution:
     def GetUglyNumber_Solution(self, index):
+
         # write code here
         if index <= 0:
             return 0
+
         res = [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15]
         if index < 11:
             return res[index - 1]
@@ -39,7 +40,7 @@ class Solution:
             next_index += 1
         return res[-1]
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     so = Solution()
-    print('第1500个丑数是:',so.GetUglyNumber_Solution(11))
+    print('第1500个丑数是:', so.GetUglyNumber_Solution(11))

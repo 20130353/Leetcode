@@ -42,7 +42,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    count = solution(2593, 5)
+    count = Solution().NumberOf1Between1AndN_Solution(2593, 5)
     print(count)
 
     # print(259+260+294)

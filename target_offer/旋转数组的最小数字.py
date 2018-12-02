@@ -54,6 +54,7 @@ class Solution:
         min_value = rotateArray[left]
         while right - left > 1:
             mid = int((left + right) / 2)
+
             if rotateArray[mid] > rotateArray[left]:
                 left = mid
             elif rotateArray[mid] < rotateArray[right]:

@@ -10,7 +10,7 @@
 # 2. 如果扩展dp数组的大小的话,小心原来的数组可能溢出!
 class Solution:
 
-    def max_increase_sequence(self, s1, s2):
+    def max_common_sequence(self, s1, s2):
 
         if not s1 or not s2:
             return 0
@@ -31,4 +31,4 @@ class Solution:
 if __name__ == '__main__':
     s1 = [3, 5, 7, 4, 8, 6, 7, 8, 2]
     s2 = [1, 3, 4, 5, 6, 7, 7, 8]
-    print(Solution().max_increase_sequence(s1, s2))
+    print(Solution().max_common_sequence(s1, s2))

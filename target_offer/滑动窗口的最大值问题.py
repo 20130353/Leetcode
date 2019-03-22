@@ -4,17 +4,6 @@
 # file: 滑动窗口的最大值问题
 # description:
 
-class Solution:
-    def maxInWindows(self, num, size):
-        # write code here
-        res = []
-        if size == 0:
-            return []
-        for i in range(0,len(num)-size+1):
-            sub = num[i:i+size]
-            res.append(max(sub))
-        return res
-
 # 反思:
 # 1. 窗口初始化的问题:应该从第一个元素开始找窗口的最值,只不过是当到达第一个窗口才开始保存最值
 # 2. 警惕窗口的size可能小于等于0
@@ -35,6 +24,7 @@ class Solution:
 
         # 判断后续的窗口最值
         for i in range(len(num)):
+
             # 判断queue的头元素是否还在窗口中,如果不在就一直弹出
             while(queue and queue[0][1] <= i- size):
                 queue.pop(0)

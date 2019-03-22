@@ -38,6 +38,6 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s1 = [3, 5, 7, 4, 8, 6, 7, 8, 2]
-    s2 = [3, 4, 7, 4, 8, 6, 7, 9, 0]
-    print(Solution().max_common_subsequence(s1, s2))
+    # s1 = [3, 5, 7, 4, 8, 6, 7, 8, 2]
+    # s2 = [3, 4, 7, 4, 8, 6, 7, 9, 0]
+    # print(Solution().max_common_subsequence(s1, s2))

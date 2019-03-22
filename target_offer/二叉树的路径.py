@@ -39,22 +39,51 @@
 #
 #         return fin_res
 
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+
+import copy
+
+
 class Solution:
     # 返回二维列表，内部每个列表表示找到的路径
-    def FindPath(self, root, expectNumber):
-        # write code here
+    def FindPath(self, root, expect_number, res, path):
         if not root:
-            return []
-        if root and not root.left and not root.right and root.val == expectNumber:
-            return [[root.val]]
-        res = []
-        left = self.FindPath(root.left, expectNumber-root.val)
-        right = self.FindPath(root.right, expectNumber-root.val)
-        for i in left+right:
-            res.append([root.val]+i)
-        return res
+            return
+
+        if sum(path) > expect_number:
+            return
+
+        if not root.left and not root.right and sum(path) == expect_number - root.val:
+            path.append(root.val)
+            res.append(path)
+            return
+
+        path.append(root.val)
+
+        self.FindPath(root.left, expect_number, res, copy.deepcopy(path))
+
+        self.FindPath(root.right, expect_number, res, copy.deepcopy(path))
+
 
 if __name__ == '__main__':
     so = Solution()
 
-    print(so.FindPath({10,5,12,4,7},22))
+    root = Node(10)
+    node1 = Node(5)
+    node2 = Node(12)
+    node3 = Node(4)
+    node4 = Node(7)
+
+    root.left = node1
+    root.right = node2
+    node1.left = node3
+    node1.right = node4
+
+    res = []
+    so.FindPath(root, 22, res, [])
+    print(res)

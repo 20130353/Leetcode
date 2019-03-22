@@ -10,14 +10,15 @@
     解法2. 非递归用队列的方式
 '''
 
+
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
 
-def solution1(T,deepth,width):
+def solution1(T, deepth, width):
     if T == None:
         width[deepth] = 0
         return
@@ -35,6 +36,7 @@ def solution1(T,deepth,width):
         solution1(T.right, deepth, width)
     return
 
+
 def solution2(T):
     if T == None:
         return 0
@@ -43,7 +45,7 @@ def solution2(T):
     max_width = 0
     while len(queue):
         size = len(queue)
-        max_width = max(max_width,size)
+        max_width = max(max_width, size)
         while size:
             top = queue[0]
             del queue[0]
@@ -53,6 +55,29 @@ def solution2(T):
                 queue.append(top.right)
             size -= 1
     return max_width
+
+
+# 使用判断条件，条件一定要些的非常明确，不能使用简写。
+class Solution:
+    def get_width(self, T):
+        if not T:
+            return 0
+        import queue
+        mqueue = queue.Queue()
+        mqueue.put(T)
+
+        max_width = 0
+        while mqueue.empty() == False:
+            size = mqueue.qsize()
+            max_width = max(max_width, size)
+            while size > 0:
+                top = mqueue.get()
+                if top.left:
+                    mqueue.put(top.left)
+                if top.right:
+                    mqueue.put(top.right)
+                size -= 1
+        return max_width
 
 
 if __name__ == '__main__':
@@ -78,3 +103,5 @@ if __name__ == '__main__':
 
     max_width = solution2(Node2)
     print(max_width)
+
+    print(Solution().get_width(Node2))

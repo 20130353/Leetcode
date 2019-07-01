@@ -8,8 +8,9 @@ def binary_find(data,v):
 
     low = 0
     high = len(data) - 1
-    while(low <= high):
-        mid = int((low+high)/2)
+#  这里如果是等于会出现死循环
+    while(low < high):
+        mid = (low+high)//2 # 这里用整除操作符号
         if data[mid] == v:
             return mid
         if data[mid] < v:

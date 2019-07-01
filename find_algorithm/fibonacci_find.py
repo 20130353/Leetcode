@@ -19,10 +19,7 @@ def fibonacc_find(arr, n, val):
         mid = low + F[k - 1] - 1
         # 这里有两种情况， 1：可能是补全的值 2：可能是正常值， 用位置n-1做个判断
         if arr[mid] == val:
-            if mid < n:
-                return mid
-            else:
-                return n - 1
+            return mid if mid < n else n - 1
         elif arr[mid] < val:
             low = mid
             k -= 2

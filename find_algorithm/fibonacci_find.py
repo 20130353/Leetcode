@@ -6,40 +6,39 @@
 
 import numpy as np
 
-def create_fibonacc():
-    a = [0,1]
-    for i in range(2,20):
-        a.append(a[i-1]+a[i-1])
-    return a
+def create_fa():
+    res = [1, 1]
+    for i in range(1, 20):
+        res = res[i - 1] + res[i - 2]
+    return res
 
-def fibonacc_find(data,v):
 
-    low = 0
-    high = len(data)-1
+def fa_find(arr, n, val):
+    F = create_fa()
 
-    F = create_fibonacc()
+    low, high = 0, n - 1
+    k = 0
+    while high > F[k] - 1:
+        k += 1
 
-    # find the clostest number
-    k = 1
-    while(high > F[k]-1):
-        k +=1
+    arr = arr + [arr[-1]] * (F[k] - 1 - n)
 
-    # make up the data array
-    for _ in range(len(data),F[k]-1):
-        data.append(data[len(data)-1])
-
-    while(low < high):
-        mid = np.int(low + F[k-1]-1)
-        if data[mid] == v:
-            return mid
-        if data[mid] < v:
+    while low < high:
+        mid = low + F[k - 1] - 1
+        #这里有两种情况， 1：可能是补全的值 2：可能是正常值， 用位置n-1做个判断
+        if arr[mid] == val:
+            if mid < n:
+                return mid
+            else:
+                return n-1
+        elif arr[mid] < val:
             low = mid
             k -= 2
         else:
-            high = mid
-            k -=1
-
+            high = mid - 1
+            k -= 1
     return -1
+
 
 if __name__ == '__main__':
     data = np.random.rand(10)

@@ -17,31 +17,62 @@
 这里我们实现解法5.
 '''
 
-def get_k(data,k):
+# def find_k(arr, low, high, k):
+#     if low >= high:
+#         return arr[low]
+#     i, j = low, high
+#     key = arr[i]
+#     while i < j:
+#         while i < j and arr[j] >= key:
+#             j -= 1
+#         if i < j:
+#             arr[i] = arr[j]
+#         while i < j and arr[i] < key:
+#             i += 1
+#         if i < j:
+#             arr[j] = arr[i]
+#     arr[j] = key
+#     print('-------------------------')
+#     print(arr)
+#     print(low, high, k)
+#     print(key, i, arr[j])
+#     if i == k:
+#         return arr[i]
+#     elif i < k:
+#         return find_k(arr, i + 1, high, k - i - 1)
+#     else:
+#         return find_k(arr, low, i - 1, k)
+# 这种方法错误是因为每次用i来和k比较出现重复减少数据的情况， 所以只能用分割数字的方式
 
-    low = 0
-    high = len(data)-1
-    key = data[low]
-
-    while(low < high):
-        while(low < high and data[high] > key):
-            high -= 1
-        if (low < high):
-            data[low] = data[high]
-        while(low < high and data[low] < key):
-            low += 1
-        if (low < high):
-            data[high] = data[low]
-    data[low] = key
-    if low == k:
-        return data[low]
+# 实现过程中遇到的难点是：
+# 1. 快速排序实现有问题， 最后将key赋值回去的时候使用i，原来以为使用i是不对的， 改成使用j，但是后来又发现使用i和使用j是一样的， 以为最后i=就，所以使用i和j都行
+# 2. 判断是否当前的mid位置的元素是不是第k个元素，应该用k-1,因为下表索引从0开始
+# 3. 下一次迭代的时候把数组所有元素放入，因为会多次k-i
+def find_k(arr, k):
+    i, j = 0, len(arr) - 1
+    key = arr[i]
+    while i < j:
+        while i < j and arr[j] >= key:
+            j -= 1
+        if i < j:
+            arr[i] = arr[j]
+        while i < j and arr[i] < key:
+            i += 1
+        if i < j:
+            arr[j] = arr[i]
+    arr[j] = key
+    if i == k - 1:
+        return arr[i]
+    elif i < k:
+        return find_k(arr[i + 1:], k - i - 1)
     else:
-        if low < k:
-            return get_k(data[low:],k-low-1)
-        else:
-            return get_k(data[:low],k)
+        return find_k(arr[:i], k)
+
 
 if __name__ == '__main__':
-    data = [3,4,6,1,8,2]
-    res = get_k(data,3)
-    print(res)
+    import sys
+
+    for line in sys.stdin:
+        arr = list(map(int, line.strip().replace('[', '').replace(']', '').split(',')))
+        ans = find_k(arr, len(arr) - 2)
+        print(ans)

@@ -36,6 +36,7 @@
 
 
 class Solution:
+    # 这种方法不能完全判断子串也是二叉排序树的后序遍历,上面的第一种方法才能判断
     def VerifySquenceOfBST(self, sequence):
         # write code here
         key = sequence[-1]

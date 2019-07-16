@@ -1,6 +1,7 @@
 # 单调栈问题
 # 给定一个数组, 找到左边第一个比它大的数字,和 右边比它大的数字
 # 核心思想是: 维护一个从大到小的栈, 一个元素进入栈的时候和栈内元素比较, 如比栈内元素大就出栈, 出栈的元素记录左右两边比它大的元素
+# 记得最后栈不为空的时候,清空栈
 def find_ans(arr):
     if not arr:
         return [], []
@@ -24,12 +25,20 @@ def find_ans(arr):
                     break
         if len(stack) < 1:
             stack.append(each)
+    while stack:
+        top = stack.pop()
+        if stack:
+            left.append((top, stack[-1]))
+        else:
+            left.append((top, -1))
+        right.append((top, -1))
+
     return left, right
 
 
 if __name__ == '__main__':
     arr = [3, 5, 2, 4, 6, 0, 1, 5]
-    arr = [1]
+    # arr = [1]
     left, right = find_ans(arr)
     print(left)
     print(right)

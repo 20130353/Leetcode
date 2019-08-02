@@ -1,0 +1,38 @@
+# 给定的字符串和字符数组，看字符数组能否拼接成字符串
+
+# 字符串数组元素可以用多次(简单版)
+# 字符串数组中的元素只能用一次（进阶版）
+
+
+def judge(string, pos, flag, arr):
+    if len(string) <= 0 and pos == 0:
+        return
+
+    if flag[0]:
+        return
+
+    if pos >= len(string):
+        flag[0] = True
+        return
+
+    for i in range(len(arr)):
+        if arr[i] == string[pos:pos + len(arr[i])]:
+            judge(string, pos + len(arr[i]), flag, arr)
+
+
+if __name__ == '__main__':
+    string = '12345'
+    arr = ['1', '2', '3', '4', '5']
+
+    string = '12345'
+    arr = ['123', '45']
+
+    string = ''
+    arr = ['123', '45']
+
+    string = '89087'
+    arr = ['123', '45']
+
+    flag = [False]
+    judge(string, 0, flag, arr)
+    print(flag)

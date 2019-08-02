@@ -6,6 +6,7 @@ def is_square(x, mid):
     else:
         return mid
 
+
 # 这里用了个小技巧, mid==x/mid,这样可以省去使用mid*mid溢出.
 def binary_sqrt(x):
     if x == 0 or x == 1:
@@ -22,11 +23,21 @@ def binary_sqrt(x):
             high = mid
 
 
+# def newton_sqrt(y0):
+#     x = y0
+#     d = 0.000001
+#     while True:
+#         nextx = x - (x * x - y0) / (2 * x)
+#         if abs(nextx - y0 / nextx) <= d:
+#             return is_square(y0, nextx)
+#         x = nextx
+#
+# 进一步优化公式
 def newton_sqrt(y0):
     x = y0
     d = 0.000001
     while True:
-        nextx = x - (x * x - y0) / (2 * x)
+        nextx = (x * x + y0) / (2 * x)
         if abs(nextx - y0 / nextx) <= d:
             return is_square(y0, nextx)
         x = nextx

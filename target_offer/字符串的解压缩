@@ -1,0 +1,47 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+# 猿辅导面试题
+# 1 字符串的压缩和解压缩
+# 1. 压缩只能是最简答的不带括号的形式，如果是带括号的形式就存在找不到的找不到之前的压缩的情况
+# 2. 解压缩，可以是带括号的情况。用栈保存，遇到字符和括号直接入栈，遇到数字判断栈顶是括号还是字符，如果是字符直接重复数字次，如果是括号就一直找到左括号重复数字次
+
+# 确定数字的时候要向后判断是多少
+
+def solution(string):
+    if not string or len(string) <= 0:
+        return ''
+    i = 0
+    stack = []
+    while i < len(string):
+        if string[i].isdigit():
+            j = i + 1
+            while j < len(string) and string[j].isdigit():
+                j += 1
+            num = int(string[i:j])
+            i = j
+            if stack[-1] == ')':
+                stack.pop()
+                key = ''
+                while stack[-1] != '(':
+                    key = stack.pop() + key
+                stack.pop()
+            else:
+                key = stack.pop()
+
+            res = ''
+            for _ in range(num):
+                res += key
+            stack = stack + list(res)
+        else:
+            stack.append(string[i])
+            i += 1
+    return stack
+
+if __name__ == '__main__':
+    # string = 'A12B2'
+    # string = '(A2B)2'
+    string = 'A2'
+
+    ans = solution(string)
+    print(''.join(ans))

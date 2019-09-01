@@ -33,10 +33,6 @@ class Solution:
         vis = [False for _ in range(len(ss))]
         final_res = []
         self.DFS(0, vis, '', len(ss), ss, final_res)
-        # return final_res
-        # return {}.fromkeys(final_res).keys()
-        # unique_res = []
-        # temp = [unique_res.append(each) for each in final_res if not each in unique_res ]
 
         return sorted(list(set(final_res)))
 
@@ -44,6 +40,5 @@ class Solution:
 if __name__ == '__main__':
     so = Solution()
 
-    # so.Permutation('')
     print(so.Permutation("aab"))
     # so.Permutation(['a','b','c'])

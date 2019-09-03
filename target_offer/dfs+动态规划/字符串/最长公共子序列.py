@@ -7,6 +7,8 @@
 # 反思:
 # 1. 写动规函数,开始就把m和n写出来
 # 2. 如果扩展dp数组的大小的话,小心原来的数组可能溢出!
+# 没有AC
+
 class Solution:
     def max_common_sequence(self, s1, s2, n, m):
         if not s1 or not s2 or n <= 0 or m <= 0:

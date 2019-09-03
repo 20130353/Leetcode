@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 连续子区间和.py
+# @File  : 和大于等于s的连续序列.py
 # @Author: smx
 # @Date  : 2019/8/15
 # @Desc  :
 
-
 # 存在的问题： 超时！ -》 记录中间变量
-
 def solution(arr, target, n):
     if n == 0:
         return 0

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 最小平方数和--数字.py
+# @File  : 最小平方数和.py
 # @Author: smx
 # @Date  : 2019/8/15
 # @Desc  :

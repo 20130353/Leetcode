@@ -4,33 +4,33 @@
 # file: 最长递增子序列
 # description:
 
-'''
-
-    解法: 动规方程: dp[i] = max(dp[j]) + 1
-
-'''
-
-
 class Solution:
+    # 您的代码已保存
+    # 运行超时: 您的程序未能在规定时间内运行结束，请检查是否循环有错或算法复杂度过大。
+    # case通过率为4.76 %
 
-    def max_increase_sequence(self, data):
+    # 以a[i]为最后一个元素的最长递增子序列
+    def max_increase_sequence(self, arr, n):
+        if not arr or n <= 0:
+            return 0, -1
 
-        if not data:
-            return 0
+        dp = [1] * n
+        # 需要找到每个元素对应的最长递增子序列
+        paths = [[each] for each in arr]
+        for i in range(n):
+            for j in range(i):
+                if arr[i] >= arr[j]:
+                    if dp[j] + 1 > dp[i] or (dp[j] + 1 == dp[i] and arr[j] < paths[i][-2]):
+                        dp[i] = dp[j] + 1
+                        paths[i] = paths[j] + [arr[i]]
 
-        dp = [1 for _ in range(len(data))]
-        for i in range(len(data)):
-            for j in range(0, i): # 这里可以搜索整个dp数组,也可以搜索之前的i个元素,因为在整个数组中比i元素小的元素个数只能有i个.所以就搜索i之前的元素就可以了
-                if data[i] > data[j]:
-                    dp[i] = max(dp[i], dp[j] + 1)
-
-        return max(dp)
+        # print(dp)
+        # print(paths)
+        return ' '.join(map(str, paths[dp.index(max(dp))]))
 
 
 if __name__ == '__main__':
-    data = [2, 1, 5, 3, 6, 4, 8, 9, 7]
-    # data = []
-    # data = [2]
-    # data = [1,4,3,2,6,5]
-    # data = [10, 22, 9, 33, 21, 50, 41, 60, 80]
-    print(Solution().max_increase_sequence(data))
+    n = int(input().strip())
+    arr = list(map(int, input().strip().split(' ')))
+    ans = Solution().max_increase_sequence(arr, n)
+    print(ans)

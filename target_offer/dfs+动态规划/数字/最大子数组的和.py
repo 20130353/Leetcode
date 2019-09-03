@@ -5,22 +5,21 @@
 # @Date  : 2019/8/28
 # @Desc  :
 
-
 class Solution(object):
     def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         if not nums:
             return 0
-        dp = [nums[0] for i in range(len(nums))]
-        max_result = nums[0]  # 最开始的是nums[0]，后面如果是负数肯定更小，如果是整数肯定变大
+        # 以a[i]位置为子数组的最后一个元素的最大和
+        # 这里无法用双指针，为什么？
+        # 虽然这里也是区间的题目，但是没有缩和开区间的可能性（有可能性就是指连续正整数），所以无法用
+        dp = [each for each in nums]
         for i in range(1, len(nums)):
-            if dp[i - 1] < 0:
-                dp[i] = nums[i]
-            else:
-                dp[i] = dp[i - 1] + nums[i]
-            if max_result < dp[i]:
-                max_result = dp[i]
-        return max_result
+            dp[i] = max(dp[i - 1] + nums[i], dp[i])
+        return max(dp)
+
+
+if __name__ == '__main__':
+    # arr = [3, 2, 4, -1, 0, 3, 4, 5, 6]
+    arr = list(map(int, input().strip().split(',')))
+    ans = Solution().maxSubArray(arr)
+    print(ans if ans >= 0 else 0)

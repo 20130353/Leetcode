@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 最大子数组的和--数字.py
+# @File  : 最大子数组的和.py
 # @Author: smx
 # @Date  : 2019/8/28
 # @Desc  :

@@ -4,7 +4,7 @@
 # file: 和为s的两个数字
 # description:
 
-# -*- coding:utf-8 -*-
+# 这个借用和为s的连续最大子数组最方便，时间复杂度比二分合适
 class Solution:
     def binary_search(self, arr, target, left, right):
         if left > right:
@@ -35,6 +35,7 @@ class Solution:
                 return [each, target]
         return []
 
+
 if __name__ == '__main__':
     so = Solution()
-    print(so.FindNumbersWithSum([1,2,3,4,5],6))
+    print(so.FindNumbersWithSum([1, 2, 3, 4, 5], 6))

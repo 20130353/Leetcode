@@ -35,14 +35,14 @@ def solution(n, dict, cur_pos, s1, s2):
 if __name__ == '__main__':
     n = int(input().strip())
     m = int(input().strip())
-    dict = {}
+    yueshu_dict = {}
     for i in range(1, n + 1):
-        dict[i] = []
+        yueshu_dict[i] = []
 
     flag = 0
     for _ in range(m):
         a, b = map(int, input().strip().split(' '))
-        dict[a].append(b)
+        yueshu_dict[a].append(b)
 
-    solution(n, dict, 0, [], [])
+    solution(n, yueshu_dict, 0, [], [])
     print(flag)

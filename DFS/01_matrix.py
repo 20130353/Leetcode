@@ -69,10 +69,10 @@ def DFS(i,j,map,vis,dis,min_dis):
 import math
 if __name__ == '__main__':
     n,m = list(map(int, input().strip().split(' ')))
-    dict = []
+    yueshu_dict = []
     for inx in range(n):
         str = list(map(int, input().strip().split(' ')))
-        dict.append(str)
+        yueshu_dict.append(str)
 
     ans = [[math.inf for _ in range(m)] for _ in range(n)]
     vis = [[False for _ in range(m)] for _ in range(n)]
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         for j in range(m):
             min_dis = [math.inf]
             vis[i][j] = True
-            DFS(i, j, dict, vis, 0, min_dis)
+            DFS(i, j, yueshu_dict, vis, 0, min_dis)
             ans[i][j] = min_dis[0]
             vis[i][j] = False
 

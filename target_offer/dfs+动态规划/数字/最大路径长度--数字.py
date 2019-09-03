@@ -53,21 +53,21 @@ def solution(T, target, cur_sum, leng, max_value, dict):
 
 if __name__ == '__main__':
     n, root = map(int, input().strip().split())
-    dict = {root: Node()}
+    yueshu_dict = {root: Node()}
 
     for i in range(n):
         fa, left, right, val = map(int, input().strip().split())
-        if dict.get(fa) is None:
-            dict[fa] = Node()
-        if left != 0 and dict.get(left) is None:
-            dict[left] = Node()
-            dict[fa].left = dict[left]
-        if right != 0 and dict.get(right) is None:
-            dict[right] = Node()
-            dict[fa].right = dict[right]
-        dict[fa].val = val
+        if yueshu_dict.get(fa) is None:
+            yueshu_dict[fa] = Node()
+        if left != 0 and yueshu_dict.get(left) is None:
+            yueshu_dict[left] = Node()
+            yueshu_dict[fa].left = yueshu_dict[left]
+        if right != 0 and yueshu_dict.get(right) is None:
+            yueshu_dict[right] = Node()
+            yueshu_dict[fa].right = yueshu_dict[right]
+        yueshu_dict[fa].val = val
 
     target = int(input().strip())
     ans = [0]
-    solution(dict[root], target, 0, 1, ans, {0: 0})
+    solution(yueshu_dict[root], target, 0, 1, ans, {0: 0})
     print(ans[0])

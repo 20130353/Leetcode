@@ -22,8 +22,34 @@ class Solution:
         return s1[max_end - max_leng + 1:max_end + 1]
 
 
+    # 算法思想：如果a[i]==a[j]，i++，j++，否则的话从j中找到和a[i]相等的元素，如果没有的话i++
+    def solution(self, s1, s2, n, m):
+        row, col = 0, m - 1
+        max_leng, max_end = 0, -1
+        while row < n:
+            i, j = row, col
+            leng = 0
+            while i < n and j < m:
+                if s1[i] == s2[j]:
+                    leng += 1
+                    if leng > max_leng:
+                        max_leng = leng
+                        max_end = i
+                else:
+                    leng = 0
+                i += 1
+                j += 1
+            if col > 0:# i从0开始，j从m-1开始到0，
+                col -= 1
+            else:
+                row += 1
+
+        return s1[max_end - max_leng + 1:max_end + 1]
+
+
 if __name__ == '__main__':
     s1 = input().strip()
     s2 = input().strip()
-    ans = Solution().max_common_subarr(s1, s2, len(s1), len(s2))
+    # ans = Solution().max_common_subarr(s1, s2, len(s1), len(s2))
+    ans = Solution().solution(s1, s2, len(s1), len(s2))
     print(ans)

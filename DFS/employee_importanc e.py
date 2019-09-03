@@ -39,16 +39,16 @@ def get_importance(ob,dict):
 
 if __name__ == '__main__':
 
-    dict = {}
+    yueshu_dict = {}
     n = int(input().strip())
     for _ in range(n):
         id,im,em = input().split(' ')
-        dict[id] = {'id':id,'im':im,'em':em}
+        yueshu_dict[id] = {'id':id, 'im':im, 'em':em}
     # print(dict)
     key = input().strip()
-    for k,item in dict.items():
+    for k,item in yueshu_dict.items():
         if k == key:
-            ans = get_importance(dict[k],dict)
+            ans = get_importance(yueshu_dict[k], yueshu_dict)
             print('ans:',ans)
             break
 

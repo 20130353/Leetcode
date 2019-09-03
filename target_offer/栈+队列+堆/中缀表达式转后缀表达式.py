@@ -7,7 +7,7 @@
 '''
     将中追表达式转成后缀表达式,再计算后缀表达式的结果
 '''
-dict = {'(':0, '+': 1, '-': 1, '*': 2, '/': 2}
+yueshu_dict = {'(':0, '+': 1, '-': 1, '*': 2, '/': 2}
 def fun(str):
     stack = []
     res = ''
@@ -24,12 +24,12 @@ def fun(str):
             if len(stack) == 0:
                 stack.append(each)
             else:
-                top_pri = dict[stack[-1]]
-                cur_pri = dict[each]
+                top_pri = yueshu_dict[stack[-1]]
+                cur_pri = yueshu_dict[each]
                 if cur_pri >= top_pri:
                     stack.append(each)
                 else:
-                    while(stack and dict[stack[-1]] >= cur_pri):
+                    while(stack and yueshu_dict[stack[-1]] >= cur_pri):
                         res += stack.pop()
                     stack.append(each)
     while(len(stack)!=0):

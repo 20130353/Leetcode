@@ -18,7 +18,6 @@ class Solution:
         return n and self.Sum_Solution(n - 1)
 
     def Sum_Solution(self, n):
-        # write code here
         self.get_sum(n)
         return self.tsum
 

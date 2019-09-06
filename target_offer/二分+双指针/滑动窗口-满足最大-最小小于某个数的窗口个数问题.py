@@ -1,6 +1,4 @@
 from collections import deque
-
-
 def max_min_subarr(arr, num):
     max_deq = deque()
     min_deq = deque()

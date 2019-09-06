@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 小米大礼包--背包.py
+# @File  : 小米大礼包.py
 # @Author: smx
 # @Date  : 2019/8/27
 # @Desc  :

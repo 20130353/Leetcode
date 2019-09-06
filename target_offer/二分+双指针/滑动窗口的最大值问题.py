@@ -26,13 +26,13 @@
 #         for i in range(len(num)):
 #
 #             # 判断queue的头元素是否还在窗口中,如果不在就一直弹出
-#             while(queue and queue[0][1] <= i- size):
+#             while(queue and queue[0][1] <= i- size): 队列是否为空
 #                 queue.pop(0)
 #
-#             # 队列为空
+#             # 队列为空,这里写的太复杂了
 #             if not queue:
 #                 queue.append((num[i],i))
-#             else:
+#             else: 一直删除直到队列为空！
 #                 # 队列不为空
 #                 if num[i] >= queue[0][0]:
 #                     del queue[:]
@@ -41,27 +41,23 @@
 #                     while (queue[-1][0] <= num[i]):
 #                         queue.pop()
 #                     queue.append((num[i], i))
-#
 #             if i >= size-1:
 #                 res.append(queue[0][0])
-#
 #         return res
 
 from collections import deque
 
 
-def windows(arr, size):
+def windows_max(arr, size):
     res = []
     deq = deque()
     for i in range(len(arr)):
-        while len(deq) >= 1 and i - size >= deq[0][1]:
+        # while len(deq) >= 1 and i - size >= deq[0][1]: # 这里写i-deq[0][1] < size 表示在窗口内最好！
+        while len(deq) >= 1 and i - deq[0][1] < size:
             deq.popleft()
         while len(deq) >= 1 and deq[-1][0] <= arr[i]:
             deq.pop()
         deq.append((arr[i], i))
-        print('-----------')
-        print('i ', i)
-        print(deq)
         if i >= size - 1:
             res.append(deq[0][0])
     return res
@@ -69,5 +65,5 @@ def windows(arr, size):
 if __name__ == '__main__':
     arr = [4, 3, 5, 4, 3, 3, 6, 7]
     size = 3
-    ans = windows(arr, size)
+    ans = windows_max(arr, size)
     print(ans)

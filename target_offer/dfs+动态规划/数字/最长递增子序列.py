@@ -18,7 +18,7 @@ class Solution:
         # 需要找到每个元素对应的最长递增子序列
         paths = [[each] for each in arr]
         for i in range(n):
-            for j in range(i):
+            for j in range(i - 1):
                 if arr[i] >= arr[j]:
                     if dp[j] + 1 > dp[i] or (dp[j] + 1 == dp[i] and arr[j] < paths[i][-2]):
                         dp[i] = dp[j] + 1

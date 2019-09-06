@@ -9,7 +9,6 @@
 # 2. 判断给定的k是否大于整个数组的长度
 
 class Solution:
-
     def partition(self, left, right, arr):
         if left > right:
             return left
@@ -36,7 +35,6 @@ class Solution:
             return self.find_k(left, index - 1, arr, k)
 
     def GetLeastNumbers_Solution(self, tinput, k):
-        # write code here
         if not tinput:
             return tinput
         if k <= 0 or k > len(tinput):

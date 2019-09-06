@@ -35,7 +35,6 @@ class Solution:
 
 
     def IsBalanced_Solution(self, pRoot):
-        # write code here
         if not pRoot:
             return False
         left_height = self.Stack_TreeDepth(pRoot.left)

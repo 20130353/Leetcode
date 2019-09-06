@@ -22,9 +22,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
-
 class Solution:
-
     # 递归的方式
     def TreeDepth(self, pRoot):
         # write code here
@@ -52,7 +50,6 @@ class Solution:
                     queue.append(cur.right)
                 size -= 1
         return count
-
 
 if __name__ == '__main__':
     root = TreeNode(0)

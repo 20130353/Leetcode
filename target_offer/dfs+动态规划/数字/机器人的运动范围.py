@@ -10,18 +10,12 @@
 
 '''
     反思：
-        1. 自定义的变量需要在init初始话函数中声明
+        1. 自定义的变量需要在init初始化函数中声明
         2. 函数传递参数记得数好，代码检查要检查好！
         3. 边界，看清是从1开始还是从0开始的！
-        
 
 '''
-
-
-# -*- coding:utf-8 -*-
-# -*- coding:utf-8 -*-
 class Solution:
-
     def __init__(self):
         self.dir = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
@@ -37,7 +31,6 @@ class Solution:
         return sum_a + sum_b
 
     def DFS(self, th, sum_, i, j, m, n, vis):
-
         for k in range(4):
             ni = i + self.dir[k][0]
             nj = j + self.dir[k][1]
@@ -47,7 +40,6 @@ class Solution:
                 self.DFS(th, sum_, ni, nj, m, n, vis)
 
     def movingCount(self, threshold, rows, cols):
-        # write code here
         vis = [[False for _ in range(cols)] for _ in range(rows)]
         sum_ = [0]
         if threshold > 0:

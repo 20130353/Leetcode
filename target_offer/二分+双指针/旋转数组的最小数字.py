@@ -14,6 +14,7 @@ NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。
 
 import numpy as np
 
+
 # def minvalue(data):
 #
 #     if len(data) == 0 or data == None:
@@ -46,7 +47,6 @@ import numpy as np
 # -*- coding:utf-8 -*-
 class Solution:
     def minNumberInRotateArray(self, rotateArray):
-        # write code here
         if len(rotateArray) == 0 or rotateArray == None:
             return 0
 
@@ -59,6 +59,8 @@ class Solution:
                 left = mid
             elif rotateArray[mid] < rotateArray[right]:
                 right = mid
+
+            # 如果出现等于了不能确定是哪一边
             elif rotateArray[mid] == rotateArray[left] and rotateArray[mid] == rotateArray[right]:
                 for i in range(left, right):
                     min_value = min(rotateArray[i], min_value)
@@ -68,9 +70,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-
-    so =Solution()
-
+    so = Solution()
 
     print(so.minNumberInRotateArray([3, 4, 5, 1, 2]))
     # print(minvalue([1, 2, 3, 4, 5]))

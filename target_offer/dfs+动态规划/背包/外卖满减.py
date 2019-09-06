@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 外卖满减--背包.py
+# @File  : 外卖满减.py
 # @Author: smx
 # @Date  : 2019/8/19
 # @Desc  :

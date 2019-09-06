@@ -39,7 +39,6 @@ class Solution:
                 vis[ni][nj] = False
 
     def hasPath(self, matrix, rows, cols, path):
-        # write code here
         vis = [[False for _ in range(cols)] for _ in range(rows)]
         ans = [False]
         for i in range(rows):

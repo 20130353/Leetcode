@@ -38,7 +38,6 @@ class Solution:
     # 中序是一直把所有的左孩子放入栈中
     # 层次遍历和前中后序遍历的差别是层次遍历是队列,前中后序遍历是栈
     def pre_vis(self, root):
-
         if not root:
             return []
         stack = [root]

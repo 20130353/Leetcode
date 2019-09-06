@@ -35,7 +35,7 @@ class prefixTree:
     def get_words(self, prefix):
         if not prefix or not self.start_with(prefix):
             return []
-        node = self.root
+        node = self.ro
         for ch in prefix:
             node = node.data.get(ch)
         word_list = []

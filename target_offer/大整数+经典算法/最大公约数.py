@@ -17,7 +17,7 @@
 def solution(a, b):
     if a < b:
         a, b = b, a
-        
+
     while b != 0:
         t = b
         a = a % b

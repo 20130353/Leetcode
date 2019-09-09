@@ -57,8 +57,15 @@
 # 10 12 20 30 29 1 0 8 30 1
 # 还是有错误！
 
+# 运行超时:您的程序未能在规定时间内运行结束，请检查是否循环有错或算法复杂度过大。
+# case通过率为70.00%
+
+# 加了sum[0]=0 和 二分查找的时候 只找i以前的！
+# --》AC
+
+# 之前累加和包不包括pos这个点需要写很多，如果假如0就很清楚！
+
 def binary_search(arr, n, target):
-    # 找到>target的最大位置
     low, high = 0, n
     ans = -1
     while low < high:
@@ -75,7 +82,7 @@ def solution(arr, n, target):
     if sum(arr) <= target:
         return n
 
-    sum_arr, cur_sum = [], 0
+    sum_arr, cur_sum = [0], 0
     max_leng = 0
     for i in range(n):
         cur_sum += arr[i]
@@ -83,16 +90,10 @@ def solution(arr, n, target):
             sum_arr.append(max(cur_sum, sum_arr[-1]))
         else:
             sum_arr.append(cur_sum)
-        pos = binary_search(sum_arr, len(sum_arr), cur_sum - target)
-        if pos != -1:
-            # print('\ncur_sum - target {}'.format(cur_sum - target))
-            if sum_arr[pos] > cur_sum - target and i - pos + 1 > max_leng:
-                # print('i {}, pos {}，leng {}'.format(i, pos, i - pos + 1))
-                max_leng = i - pos + 1
-            if sum_arr[pos] == cur_sum - target and i - pos > max_leng:
-                # print('i {}, pos {}，leng {}'.format(i, pos, i - pos))
-                max_leng = i - pos
-        print(sum_arr)
+
+        pos = binary_search(sum_arr, i, cur_sum - target)
+        if pos != -1 and i - pos + 1 > max_leng:
+            max_leng = i - pos + 1
     return max_leng
 
 

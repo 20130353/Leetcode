@@ -12,6 +12,7 @@
 # 好像没有可以优化的方法！
 # 内存超限:您的程序使用了超过限制的内存
 # case通过率为9.09%
+# 加入长度判断和sorted判断依然是超内存！
 def get_change(string):
     if string.__len__() <= 1:
         return [string]
@@ -34,6 +35,8 @@ def get_change(string):
 
 def solution(string, target):
     if string.__len__() != target.__len__():
+        return False
+    if sorted(string) != sorted(target):
         return False
     change_string = get_change(string)
     # print(change_string)

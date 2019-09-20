@@ -166,4 +166,4 @@ if __name__ == '__main__':
         arr.append((a, b))
     min_cost = [float('inf')]
     ans = solution(arr, 0, min_cost)
-    print(min_cost[0])
+    print(min_cost[0])  

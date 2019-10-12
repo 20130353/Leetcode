@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 # author: sunmengxin
 # time: 18-11-22
-# file: 字符串的排列_1
+# file: 字符串的排列
 # description:
-
-# -*- coding:utf-8 -*-
-
 
 # 反思：
 #  1. 字符串就当做list来处理
@@ -14,20 +11,18 @@
 class Solution:
 
     def DFS(self, index, vis, res, total, ss, final_res):
-
         if index == total:
             final_res.append(res)
-
         for inx, each in enumerate(ss):
             if vis[inx] == False:
                 vis[inx] = True
-                res = ''.join([res,ss[inx]])
+                res = ''.join([res, ss[inx]])
                 self.DFS(index + 1, vis, res, total, ss, final_res)
                 vis[inx] = False
                 res = res[:-1]
 
     def Permutation(self, ss):
-        if not ss or ss == '' or ss == "":
+        if not ss or ss.__len__() <= 0:
             return []
 
         vis = [False for _ in range(len(ss))]
@@ -39,6 +34,5 @@ class Solution:
 
 if __name__ == '__main__':
     so = Solution()
-
-    print(so.Permutation("aab"))
-    # so.Permutation(['a','b','c'])
+    print(so.Permutation('aab'))
+    print(so.Permutation(['a', 'b', 'c']))

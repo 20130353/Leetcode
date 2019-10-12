@@ -2,7 +2,9 @@
 # Author: sunmengxin
 # time: 10/10/18
 # file: RB.py
-# description: own codes
+# description: 红黑树
+
+
 
 RED = 0
 BLACK = 1

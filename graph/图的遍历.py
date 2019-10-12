@@ -57,7 +57,7 @@ if __name__ == '__main__':
     #     if visit[i] == 0:
     #         visit[i] = 1
     #         print(i,end='\t')
-    #         DFS(i,n,map,visit)
+    #         DFS+BFS(i,n,map,visit)
 
     for i in range(n):
         if visit[i] == 0:

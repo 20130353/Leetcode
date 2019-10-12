@@ -7,6 +7,7 @@
 
 
 # 不是很懂为什么这道题不对？
+# 可能有DP的方法！
 def dfs(arr, m, vis, ans, cur_pos, cur_dis):
     global min_dis
     global max_value

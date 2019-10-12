@@ -14,7 +14,7 @@
 '''
 
 
-# # 第一种方法：DFS
+# # 第一种方法：DFS+BFS
 # class Solution:
 #
 #     def min_path(self, i, j, max_i, max_j, map, cur_sum, res):

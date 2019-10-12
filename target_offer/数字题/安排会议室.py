@@ -10,7 +10,6 @@ class Meetting:
 class Solution:
     def sort_room(self, arr):
         sorted(arr, key=functools.cmp_to_key(lambda x, y: x.end - y.end))
-
         cur = 0
         count = 0
         while len(arr) > 0:

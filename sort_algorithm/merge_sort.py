@@ -9,7 +9,6 @@ def merge(left,right):
     i,j = 0,0
     res = []
     while(i < len(left) and j < len(right)):
-        # only compare one time
         if left[i] < right[j]:
             res.append(left[i])
             i += 1
@@ -17,9 +16,6 @@ def merge(left,right):
             res.append(right[j])
             j += 1
 
-    # if here be res.append(left[i:])
-    # result would be res=[xx,xx,[xx]]
-    # because the left elements of left or right array would be list
     if i < len(left):
         res += left[i:]
     if j < len(right):

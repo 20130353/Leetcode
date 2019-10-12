@@ -3,7 +3,7 @@
 # time: 10/18/18
 # file: 最小生成树-kruskal算法.py
 # description:
-
+# 确定新加入的顶点不会组成环！环按照并差集来做！
 
 import numpy as np
 import math

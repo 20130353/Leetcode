@@ -5,16 +5,18 @@
 # description: 一步一步地将入度为0的节点删除,直至没有入度为0的节点为止
 
 class Edge:
-    def __init__(self,vex,w,next):
+    def __init__(self, vex, w, next):
         self.vex = vex
         self.w = w
         self.next = next
 
+
 class Vex:
-    def __init__(self,in_num,data,first_edge):
+    def __init__(self, in_num, data, first_edge):
         self.in_num = in_num
         self.data = data
         self.first_edge = first_edge
+
 
 if __name__ == '__main__':
     n, m = input().split()
@@ -33,14 +35,12 @@ if __name__ == '__main__':
         if edge_list[i].in_num == 0:
             stack.append(i)
 
-    while(len(stack) != 0):
+    while (len(stack) != 0):
         top = stack.pop()
         e = edge_list[top].first_edge
         while (e):
             k = e.vex
             edge_list[k].in_num -= 1
-            if (edge_list[k].in_num == 0):
-                stack.append(k)
-
-
-
+        for i in range(n):
+            if edge_list[i].in_num == 0:
+                stack.append(i)

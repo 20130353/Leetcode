@@ -2,7 +2,9 @@
 # Author: sunmengxin
 # time: 10/18/18
 # file: 多对多最短路径-floyd算法.py
-# description: 个人觉得将dijstra算法改成多起点遍历输出的时间效率和Floyd的时间效率是一样的
+# description:
+# 个人觉得将dijstra算法改成多起点遍历输出的时间效率和Floyd的时间效率是一样的
+# 多对多算法是DP算法
 # 这里是将中间节点遍历了一遍
 
 import math

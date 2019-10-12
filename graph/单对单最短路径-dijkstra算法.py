@@ -2,7 +2,14 @@
 # Author: sunmengxin
 # time: 10/18/18
 # file: 单对单最短路径-dijkstra算法.py
-# description: 一步一步更新经多经过当前点的最短路径
+# description:
+# 每次找到距离起点最近的且没有被访问的点
+# 利用新被访问的点更新最短路径
+# 最终找到和每个点距离起点最近的点
+# 这是起点对多个点的最短路径，
+# 如果是两个之间的最短路径可以直接用DP，时间复杂度n3
+# 如果是递归，时间复杂度阶乘！
+# 所以时间最优的是迪杰斯克拉算法，时间复杂度是n2
 
 import math
 import copy as cp
@@ -11,7 +18,7 @@ if __name__ == '__main__':
 
     n, m = input().split()
     n, m = int(n), int(m)
-
+    v = [0]
     vis = [0 for _ in range(n)]
     map = [[math.inf for _ in range(n)] for _ in range(n)]
     for i in range(n):
@@ -26,24 +33,26 @@ if __name__ == '__main__':
         map[int(b)][int(a)] = int(w)
 
     dis = cp.deepcopy(map[0])
-    vis[0] = 1 # v0 是起点,算作是已经被访问过了
-    print(0,end = '\t')
-    for i in range(1,n):
-        # 找到一个ie最近的顶点
-        min_j = -1
+    vis[0] = 1  # v0是起点
+    for i in range(1, n):
+        # 找到一个最近的顶点
+        next_v = -1
         min_dis = math.inf
-        for k in range(1,n):
+        for k in range(1, n):
             if vis[k] == 0 and dis[k] < min_dis:
-                min_j = k
+                next_v = k
                 min_dis = dis[k]
-        if min_j == -1:
+        if next_v == -1:
             break
         else:
-            vis[min_j] = 1
-            print(min_j,end = '\t')
+            v.append(next_v)
+            vis[next_v] = 1
             for k in range(n):
-                if vis[k] == 0 and dis[k] > min_dis + map[min_j][k]:
-                    dis[k] = min_dis + map[min_j][k]
+                if vis[k] == 0 and dis[k] > min_dis + map[next_v][k]:
+                    dis[k] = min_dis + map[next_v][k]
+    print(' '.format(map(str, v)))
+
+
 '''
 9 16
 0 1 1

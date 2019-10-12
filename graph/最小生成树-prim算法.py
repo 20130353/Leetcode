@@ -3,7 +3,7 @@
 # time: 10/17/18
 # file: 最小生成树-prim算法.py
 # description:
-
+# 每次找到权重最小的边加入树
 import numpy as np
 import math
 import copy as cp
@@ -21,28 +21,25 @@ if __name__ == '__main__':
 
     for _ in range(m):
         x = input()
-        # print(x.replace(' ','_'))
         a, b, w = x.split(' ')
         map[int(a)][int(b)] = int(w)
         map[int(b)][int(a)] = int(w)
 
     min_dis = cp.deepcopy(map[0])
-    print(0,end='\t')
     for i in range(n):
         min_v = math.inf
-        min_j = -1
+        next_v = -1
         for j in range(n):
             if min_dis[j] != 0 and min_dis[j] < min_v:
-                min_j = j
+                next_v = j
                 min_v = min_dis[j]
-        if min_j == -1: # 所有点的都被遍历了
+        if next_v == -1: # 所有点的都被遍历了
             break
         else:
-            print(min_j,end='\t')
-            min_dis[min_j] = 0
+            min_dis[next_v] = 0
             for k in range(n):
-                if map[min_j][k] < min_dis[k]:
-                    min_dis[k] = map[min_j][k]
+                if map[next_v][k] < min_dis[k]:
+                    min_dis[k] = map[next_v][k]
 
 '''
 9 15

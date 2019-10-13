@@ -6,6 +6,7 @@
 # @Desc  :
 
 class Mixture:
+    # 思考这个问题的方式是：从最简单的问题开始，加一个字符的方式，加两个字符的方式
     # 答案错误: 您提交的程序没有通过所有的测试用例
     # case通过率为40.00 %
     # 存在的问题：子串写成子序列了
@@ -14,7 +15,6 @@ class Mixture:
         for i in range(1, n):
             if string[i] != string[i - 1]:
                 dp[i] = dp[i - 1] + 1
-        # print(dp)
         return max(dp)
 
 

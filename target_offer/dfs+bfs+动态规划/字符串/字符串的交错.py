@@ -23,19 +23,3 @@ class Mixture:
                 if s3[i + j - 1] == s2[j - 1] and (i == 0 or dp[i][j - 1] == 1):
                     dp[i][j] = 1
         return True if dp[n][m] == 1 else False
-
-
-if __name__ == '__main__':
-    # s1 = '2019'
-    # s2 = '9102'
-    # s3 = '22001199'
-    #
-    try:
-        while True:
-            s1 = input().strip()
-            s2 = input().strip()
-            s3 = input().strip()
-            ans = solution(s1, s2, s3)
-            print(ans)
-    except Exception:
-        pass

@@ -11,12 +11,10 @@
 class Palindrome:
     def getLongestPalindrome(self, a, n):
         dp = [[0] * n for _ in range(n)]
-        for i in range(n):
+        for i in range(n - 2, -1, -1):
             dp[i][i] = 1
             if i + 1 < n and a[i] == a[i + 1]:
                 dp[i][i + 1] = 1
-
-        for i in range(n - 2, -1, -1):
             for j in range(i + 1, n):
                 if a[i] == a[j]:
                     dp[i][j] = dp[i + 1][j - 1] + 2

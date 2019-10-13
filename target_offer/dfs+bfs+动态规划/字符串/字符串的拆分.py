@@ -50,6 +50,7 @@ def kmp(s1, s2, s):
 
 
 # 阶梯思路：KMP+DP
+# 这里的拆分不需要连续，所以可以用直接跳的方式，如果是连续的话，需要用1表示
 def solution(arr, T,n):
     s = {}
     for i in range(n):
@@ -65,7 +66,7 @@ def solution(arr, T,n):
                 break
             max_ans = max(dp[j] + 1, max_ans)
         dp[i] = max_ans
-    # print(dp)
+
     return dp[0]
 
 if __name__ == '__main__':

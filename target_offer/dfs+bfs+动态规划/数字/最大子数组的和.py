@@ -12,6 +12,7 @@ class Solution(object):
         # 以a[i]位置为子数组的最后一个元素的最大和
         # 这里无法用双指针，为什么？
         # 虽然这里也是区间的题目，但是没有缩和开区间的可能性（有可能性就是指连续正整数），所以无法用
+        # 可以用map
         dp = [each for each in nums]
         for i in range(1, len(nums)):
             dp[i] = max(dp[i - 1] + nums[i], dp[i])

@@ -16,41 +16,6 @@
 
 # 字符串数组元素可以用多次(简单版)
 # 字符串数组中的元素只能用一次（进阶版）
-
-
-class KMP:
-    def get_next(self, pattern):
-        next = [-1, 0]
-        i, leng = 2, 0
-        while i < pattern.__len__():
-            if pattern[i] == pattern[leng]:
-                leng += 1
-                next[i] = leng
-                i += 1
-            elif leng > 0:
-                leng = next[leng]
-            else:
-                next[i] = 0
-                i += 1
-        return next
-
-    def match(self, string, pattern):
-        next = self.get_next(pattern)
-        i, j = 0, 0
-        pos = []
-        while i < len(string):
-            if string[i] == pattern[j] or j == -1:
-                i += 1
-                j += 1
-                if j == len(pattern):
-                    pos.append(i - j + 1)
-                    i += 1
-                    j = 0
-            else:
-                j = next[j]
-        return pos
-
-
 #
 # def judge(string, pos, flag, arr):
 #     if len(string) <= 0 and pos == 0:
@@ -67,23 +32,56 @@ class KMP:
 #         if arr[i] == string[pos:pos + len(arr[i])]:
 #             judge(string, pos + len(arr[i]), flag, arr)
 
-def solution(strings, target):
-    pos = [[] * len(target)]
+
+class KMP:
+    def get_next(self, pattern):
+        next = [-1, 0]
+        i, leng = 2, 0
+        while i < pattern.__len__():
+            if pattern[i] == pattern[leng]:
+                leng += 1
+                next.append(leng)
+                i += 1
+            elif leng > 0:
+                leng = next[leng]
+            else:
+                next.append(0)
+                i += 1
+        return next
+
+    def match(self, string, pattern):
+        next = self.get_next(pattern)
+        i, j = 0, 0
+        pos = []
+        while i < len(string):
+            if string[i] == pattern[j] or j == -1:
+                i += 1
+                j += 1
+                if j == len(pattern):
+                    pos.append(i - 1)
+                    i += 1
+                    j = 0
+            else:
+                j = next[j]
+        return pos
+
+
+def solution(arr, target):
+    pos = [[] for _ in range(len(target))]
     kmp = KMP()
-    for inx, each in enumerate(strings):
+    for inx, each in enumerate(arr):
         p = kmp.match(target, each)
-        for i in range(len(p)):
-            pos[p[i]].append(inx)
+        for i in p:
+            pos[i].append(inx)
 
     dp = [0] * len(target)
-    for i in pos[0]:
-        dp[i] = 1
-
-    for i in range(len(target)):
+    for i in range(1, len(target)):
         for j in pos[i]:
-            dp[i] = dp[i] or dp[i - pos[i][j]]
+            if i - len(arr[j]) + 1 > 0:
+                dp[i] |= dp[i - len(arr[j])]
+            if i - len(arr[j]) + 1 == 0:
+                dp[i] = 1
     return dp[len(target) - 1]
-
 
 if __name__ == '__main__':
     string = '12345'
@@ -91,13 +89,12 @@ if __name__ == '__main__':
 
     string = '12345'
     arr = ['123', '45']
+    #
+    # string = ''
+    # arr = ['123', '45']
+    #
+    # string = '89087'
+    # arr = ['123', '45']
 
-    string = ''
-    arr = ['123', '45']
-
-    string = '89087'
-    arr = ['123', '45']
-
-    flag = [False]
-    judge(string, 0, flag, arr)
-    print(flag)
+    ans = solution(arr, string)
+    print(ans)

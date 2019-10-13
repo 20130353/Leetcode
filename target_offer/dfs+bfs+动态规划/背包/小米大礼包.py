@@ -21,9 +21,7 @@
 # 改成dp[j]=dp[j] or dp[j-arr[i]]
 # 运行超时:您的程序未能在规定时间内运行结束，请检查是否循环有错或算法复杂度过大。
 # case通过率为85.00%
-# 可能就是python太慢，c++能过的题目，python就是过不了！
-# 写成没有函数的形式！--> 更慢！
-
+# 语言的问题！
 def solution(n, m, arr):
     sum_arr = sum(arr)
     if m == 0 or sum_arr < m:

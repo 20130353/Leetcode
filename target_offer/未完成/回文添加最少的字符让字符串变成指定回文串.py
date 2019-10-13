@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 回文添加最少的字符让字符串变成回文串.py
+# @File  : 回文添加一个字符让字符串变成回文串.py
 # @Author: smx
 # @Date  : 2019/8/30
 # @Desc  :

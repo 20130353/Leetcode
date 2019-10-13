@@ -6,11 +6,10 @@
 # @Desc  :
 
 # 存在的问题：理解数据有问题！ pi，ai，qi，bi 是指同一道题的花费时间和收益
-# 存在的问题：数据从第一个开始，就会丢掉最后一个i -》 下次直接不全前面的，然后从下标1开始
+# 存在的问题：数据从第一个开始，就会丢掉最后一个i -> 下次直接不全前面的，然后从下标1开始
 def solution(n, p, a, q, b):
     t = 120
     dp = [[0] * (t + 1) for _ in range(n + 1)]
-
     for i in range(1, n + 1):
         for j in range(1, t + 1):
             if j >= q[i]:
@@ -19,7 +18,6 @@ def solution(n, p, a, q, b):
                 dp[i][j] = max(dp[i - 1][j - p[i]] + a[i], dp[i - 1][j])
             else:
                 dp[i][j] = dp[i - 1][j]
-    # print(dp)
     return dp[n][t]
 
 

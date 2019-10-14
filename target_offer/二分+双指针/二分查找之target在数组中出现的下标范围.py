@@ -2,32 +2,19 @@
 def bineary_search_max(arr, n, target):
     '''
     找到最大位置
-    :param arr:
-    :param n:
-    :param target:
-    :return:
     '''
     low, high = 0, n - 1
     while low < high:
-        if low + 1 == high:
-            mid = low + (high + 1 - low) // 2
-        else:
-            mid = low + (high - low) // 2
-        if arr[mid] <= target:  # 答案在包含这个位置的右边
+        mid = low + (high - low + 1) // 2
+        if arr[mid] <= target:
             low = mid
         else:
             high = mid - 1
     return low if arr[low] == target else -1
 
-
-# 用high守住位置，不断更新high的位置，让low一直增大
 def bineary_search_min(arr, n, target):
     '''
-    找到最大位置
-    :param arr:
-    :param n:
-    :param target:
-    :return:
+    找到最小位置
     '''
     low, high = 0, n - 1
     while low < high:

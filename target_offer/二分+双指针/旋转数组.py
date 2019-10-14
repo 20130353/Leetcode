@@ -19,9 +19,8 @@ def solution(matrix, n):
             matrix[i + k][j] = tmp
         i += 1
         j -= 1
-        print(matrix)
-        print()
     return matrix
+
 
 if __name__ == '__main__':
     matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]

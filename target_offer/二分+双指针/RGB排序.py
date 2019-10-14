@@ -8,38 +8,36 @@
 '''
 
 
-def sort_RGB(str):
-    i = 0
-    while str[i] == 'R' and i < len(str):
-        i += 1
+# 定义左边界，右边界，找到需要
 
-    if i >= len(str):
+def sort_RGB(str):
+    R = 0
+    while str[R] == 'R' and R < len(str):
+        R += 1
+    if R >= len(str):
         return str
 
     j = len(str) - 1
-
     while str[j] == 'B' and j >= 0:
         j -= 1
     if j <= 0:
         return str
 
-    for k in range(i, j):
-        if k > j:
-            return str
-        while str[k] != 'G':  # 忽略'G'
-            if str[k] == 'R':  # 直接找'R'
-                str[i], str[k] = str[k], str[i]
-                while str[i] == 'R':  # 直接找 'G'
-                    i += 1
-                k = max(k, i)
-                if k > j:
+    for G in range(R, j):
+        while str[G] != 'G':  # 忽略'G'
+            if str[G] == 'R':  # 直接找'R'
+                str[R], str[G] = str[G], str[R]
+                while str[R] == 'R':  # 直接找 'G'
+                    R += 1
+                G = max(G, R)
+                if G > j:
                     return str
-            if str[k] == 'B':  # 直接找'B'
-                str[j], str[k] = str[k], str[j]
+            if str[G] == 'B':  # 直接找'B'
+                str[j], str[G] = str[G], str[j]
                 while str[j] == 'B':
                     j -= 1
-                k = min(k, j)
-                if k < i:
+                G = min(G, j)
+                if G < R:
                     return str
 
 

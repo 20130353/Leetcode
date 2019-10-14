@@ -42,6 +42,7 @@ def binary_sqrt(x):
 #
 
 # 进一步优化公式
+# 根据切线方程得到的公式！
 def newton_sqrt(y0):
     x = y0
     d = 0.000001

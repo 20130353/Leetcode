@@ -5,19 +5,20 @@
 # description:
 
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
-def insert_node(T,data):
+
+def insert_node(T, data):
     if T == None:
         return Node(data)
     else:
-        T.next = insert_node(T.next,data)
+        T.next = insert_node(T.next, data)
     return T
 
-def merge_list(T1,T2):
 
+def merge_list(T1, T2):
     if T1 == None and T2 == None:
         return
 
@@ -28,22 +29,23 @@ def merge_list(T1,T2):
         return T1
 
     T = None
-    while(T1 != None and T2 != None):
+    while (T1 != None and T2 != None):
         if T1.data <= T2.data:
-            T = insert_node(T,T1.data)
+            T = insert_node(T, T1.data)
             T1 = T1.next
         else:
-            T = insert_node(T,T2.data)
+            T = insert_node(T, T2.data)
             T2 = T2.next
     if T1 != None:
-        while(T1 != None):
-            T = insert_node(T,T1.data)
+        while (T1 != None):
+            T = insert_node(T, T1.data)
             T1 = T1.next
     if T2 != None:
         while (T2 != None):
-            T = insert_node(T,T2.data)
+            T = insert_node(T, T2.data)
             T2 = T2.next
     return T
+
 
 if __name__ == '__main__':
 
@@ -60,8 +62,8 @@ if __name__ == '__main__':
     # data2 = [1,2,3]
     # #
 
-    data1 = [5,5,5,5,5,6,7]
-    data2 = [1,2,3,5,5,5]
+    data1 = [5, 5, 5, 5, 5, 6, 7]
+    data2 = [1, 2, 3, 5, 5, 5]
 
     T1 = None
     for each in data1:
@@ -71,7 +73,7 @@ if __name__ == '__main__':
     for each in data2:
         T2 = insert_node(T2, each)
 
-    T = merge_list(T1,T2)
-    while(T):
-        print(T.data,end=' ')
+    T = merge_list(T1, T2)
+    while (T):
+        print(T.data, end=' ')
         T = T.next

@@ -10,63 +10,34 @@
     解法2.用递归的方式划分
 '''
 
-def get_multiply(a,n):
-    for i in range(n):
-        a = a * a
-    return a
-
-def solution1(a,p):
-    if a == 0:
-        return 0
-    elif p == 0:
-        return 1
-    elif p > 0:
-        return get_multiply(a,p)
-    else:
-        res = get_multiply(a,p)
-        if res == 0:
-            return 0
-        else:
-            return 1/res
-    return
-
-
-# 这个代码有问题！ 没有考虑到负数
-# def solution2(a,p):
-    #
-    # if a == 0:
-    #     return 0
-    # if p == 0:
-    #     return 1
-    # if p == 1:
-    #     return a
-    # if p & 1 == 0:
-    #     return solution2(a,p//2) * solution2(a,p//2)
-    # else:
-    #     return solution2(a,p//2) * solution2(a,p//2) * a
-
-# 这是正确的代码
-# -*- coding:utf-8 -*-
+# AC!
 class Solution:
-
-    def Power(self, base, exponent):
-        # write code here
-
-        if base == 0:
-            return 0
-        if exponent == 0:
+    def mulity(self, base, n):
+        if n == 0:
             return 1
-        if exponent == 1:
+        if n == 1:
             return base
-        if exponent < 0:
-            if -exponent & 1 == 0:
-                return 1 / (self.Power(base, -exponent // 2) * self.Power(base, -exponent // 2))
-            else:
-                return 1 / (self.Power(base, -exponent // 2) * self.Power(base, -exponent // 2) * base)
+        if n & 1 == 1:
+            part = self.mulity(base, n // 2)
+            return part * part * base
         else:
-            if exponent & 1 == 0:  # 偶数
-                return self.Power(base, exponent // 2) * self.Power(base, exponent // 2)
-            else:  # 奇数
-                return self.Power(base, exponent // 2) * self.Power(base, exponent // 2) * base
+            part = self.mulity(base, n // 2)
+            return part * part
+
+    def Power(self, base, n):
+        if n == 0:
+            return 1
+        if n == 1:
+            return base
+        if n < 0:
+            return 1 / self.mulity(base, -n)
+        else:
+            return self.mulity(base, n)
+
 
 if __name__ == '__main__':
+    # ans = solution(1, 1)
+    # ans = solution(2, 3)
+    # ans = solution(3, -2)
+    ans = Solution().Power(3, 0)
+    print(ans)

@@ -15,7 +15,6 @@ class Solution:
 
         # write code here
 
-
     # 这份代码存在的问题是：还要把stack2中的元素重新放回去，其实是没有必要的
     # def pop(self):
     #     # return xx
@@ -33,26 +32,24 @@ class Solution:
     #
     #     return res
 
-    # 这份代码存在的问题是没有想到stack1可能为空
+    # 这个方法有错！只是将stack1放入了stack2，但是没有stack2弹出的过程
     # def pop(self):
-    #     # return xx
+    #     if self.stack1 == [] and self.stack2 == []:
+    #         return None
+    #
     #     if self.stack2 == []:
-    #         while len(self.stack1):
+    #         while self.stack1:
     #             self.stack2.append(self.stack1.pop())
     #         return self.stack2.pop()
-    #     return  self.stack1.pop()
+    #     return self.stack1.pop()
 
-    # 这个方法有错！
+    # 仔细品味一下这段代码！
     def pop(self):
-        # return xx
-        if self.stack1 == [] and self.stack2 == []:
+        if self.stack2:
+            return self.stack2.pop()
+        elif not self.stack1:
             return None
-
-        if self.stack2 == []:
+        else:
             while self.stack1:
                 self.stack2.append(self.stack1.pop())
             return self.stack2.pop()
-        return  self.stack1.pop()
-
-
-

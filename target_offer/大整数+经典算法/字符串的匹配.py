@@ -5,34 +5,27 @@
 # 运行超时:您的程序未能在规定时间内运行结束，请检查是否循环有错或算法复杂度过大。
 # case通过率为85.00%
 
+
+# 运行超时:您的程序未能在规定时间内运行结束，请检查是否循环有错或算法复杂度过大。
+# case通过率为65.00%
 # def solution(string, pattern):
-#     # print(string, '\t', pattern)
-#
-#     if pattern == '.*':
-#         return True
-#
-#     if string == '':
-#         if pattern == '*' or pattern == '':
+#     if string.__len__() == 0:
+#         if pattern == '*':
 #             return True
-#         else:
-#             return False
+#         return pattern.__len__() == 0
 #
-#     if pattern == '':
-#         return False
-#
-#     # 合并情况！·
-#     if string[0] == pattern[0] or pattern[0] == '.':
-#         if (len(pattern) >= 2 and pattern[1] != '*') or len(pattern) == 1:
-#             return solution(string[1:], pattern[1:])
-#         else:
-#             return solution(string[1:], pattern) or solution(string[1:], pattern[2:])
+#     if len(pattern) >= 2 and pattern[1] == '*':
+#         return solution(string[1:], pattern) or solution(string[1:], pattern[2:])
 #     else:
-#         if len(pattern) >= 2 and pattern[1] == '*':
-#             return solution(string[1:], pattern[2:])
+#         if string[0] == pattern[0] or pattern[0] == '.':
+#             return solution(string[1:], pattern[1:])
 #         else:
 #             return False
 
+
 # 这个代码写的非常棒！
+# 运行超时:您的程序未能在规定时间内运行结束，请检查是否循环有错或算法复杂度过大。
+# case通过率为65.00%
 def solution(string, pattern):
     if string.__len__() == 0:
         return pattern.__len__() == 0
@@ -51,4 +44,4 @@ if __name__ == '__main__':
     print('YES') if ans else print('NO')
 
 # fasfadasfa
-# ..*sfada...
+# # ..*sfada...

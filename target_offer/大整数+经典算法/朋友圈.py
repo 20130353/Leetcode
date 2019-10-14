@@ -1,3 +1,4 @@
+# 这道题用DFS或者BFS，和卫星地图的方式一样
 class Solution:
     def find_root(self, i, dict):
         while dict[str(i)] != i:

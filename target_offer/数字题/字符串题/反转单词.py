@@ -6,9 +6,8 @@
 
 class Solution:
     def ReverseSentence(self, s):
-        # write code here
-        lmb = lambda x:x[::-1]
-        return ' '.join(list(map(lmb,s[::-1].split(' '))))
+        return ' '.join(list(s.split(' '))[::-1])
+
 
 if __name__ == '__main__':
     so = Solution()

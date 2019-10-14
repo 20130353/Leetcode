@@ -5,41 +5,46 @@
 # description:
 
 '''
-    将中追表达式转成后缀表达式,再计算后缀表达式的结果
+    将中缀表达式转成后缀表达式,再计算后缀表达式的结果
+    后缀表达式是数字在前，符号在后面。
 '''
-yueshu_dict = {'(':0, '+': 1, '-': 1, '*': 2, '/': 2}
-def fun(str):
+dict = {'(': 0, '+': 1, '-': 1, '*': 2, '/': 2,'%':2,'^':3}
+
+
+def solution(str):
     stack = []
     res = ''
     for each in str:
-        if each not in ['+','-','*','/','(',')']:
+        if each not in ['+', '-', '*', '/', '(', ')']:
             res += each
         elif each == '(':
             stack.append('(')
         elif each == ')':
-            while(stack and stack[-1] != '('):
+            while (stack and stack[-1] != '('):
                 res += stack.pop()
             del stack[-1]
         else:
             if len(stack) == 0:
                 stack.append(each)
             else:
-                top_pri = yueshu_dict[stack[-1]]
-                cur_pri = yueshu_dict[each]
+                top_pri = dict[stack[-1]]
+                cur_pri = dict[each]
+                # 当前符号大于等于栈顶的符号就放入栈
                 if cur_pri >= top_pri:
                     stack.append(each)
                 else:
-                    while(stack and yueshu_dict[stack[-1]] >= cur_pri):
+                    # 将小于当前元素的符号都出栈
+                    while (stack and dict[stack[-1]] >= cur_pri):
                         res += stack.pop()
                     stack.append(each)
-    while(len(stack)!=0):
+    while (len(stack) != 0):
         res += stack.pop()
-
     return res
+
 
 def cal(str):
     stack = []
-    ops = ['+','-','*','/']
+    ops = ['+', '-', '*', '/']
     for each in str:
         if each not in ops:
             stack.append(each)
@@ -53,14 +58,15 @@ def cal(str):
             elif each == '*':
                 num = float(num1) * float(num2)
             else:
-                num = float(num1) / floar(num2)
+                num = float(num1) / float(num2)
             stack.append(num)
     return stack[-1]
 
-if __name__ == '__main__':
 
-    str = '6*(5+(2+3)*8+3)'
-    hou_str = fun(str)
+if __name__ == '__main__':
+    # str = '6*(5+(2+3)*8+3)'
+    str = '1+((2+3)*4)-5'
+    hou_str = solution(str)
     print(hou_str)
     res = cal(hou_str)
     print(res)

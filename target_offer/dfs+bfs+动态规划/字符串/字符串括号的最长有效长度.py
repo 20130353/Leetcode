@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 字符串括号匹配.py
+# @File  : 字符串括号的最长有效长度.py
 # @Author: smx
 # @Date  : 2019/8/31
 # @Desc  :

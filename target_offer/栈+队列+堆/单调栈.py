@@ -1,44 +1,34 @@
 # 单调栈问题
-# 给定一个数组, 找到左边第一个比它大的数字,和 右边比它大的数字
-# 核心思想是: 维护一个从大到小的栈, 一个元素进入栈的时候和栈内元素比较, 如比栈内元素大就出栈, 出栈的元素记录左右两边比它大的元素
-# 记得最后栈不为空的时候,清空栈
-def find_ans(arr):
-    if not arr:
-        return [], []
+# 给定一个数组, 找到左边第一个比它小的数字,和 右边比它小的数字
+
+
+def solution(arr):
+    stack = []
+    left, right = [], []
+    for i in range(len(arr)):
+        while len(stack) > 0 and stack[-1][0] > arr[i]:
+            stack.pop()
+        if stack.__len__() > 0:
+            left.append(stack[-1][1])
+        else:
+            left.append(-1)
+        stack.append((arr[i], i))
 
     stack = []
-    left = []
-    right = []
-    for each in arr:
-        if len(stack) >= 1:
-            while stack:
-                top = stack[-1]
-                if top < each:
-                    stack.pop()
-                    if stack:
-                        left.append((top, stack[-1]))
-                    else:
-                        left.append((top, -1))
-                    right.append((top, each))
-                else:
-                    stack.append(each)
-                    break
-        if len(stack) < 1:
-            stack.append(each)
-    while stack:
-        top = stack.pop()
-        if stack:
-            left.append((top, stack[-1]))
+    for i in range(len(arr) - 1, -1, -1):
+        while len(stack) > 0 and stack[-1][0] > arr[i]:
+            stack.pop()
+        if stack.__len__() > 0:
+            right.append(stack[-1][1])
         else:
-            left.append((top, -1))
-        right.append((top, -1))
-
-    return left, right
+            right.append(-1)
+        stack.append((arr[i], i))
+    return left, right[::-1]
 
 
 if __name__ == '__main__':
-    arr = [3, 5, 2, 4, 6, 0, 1, 5]
-    # arr = [1]
-    left, right = find_ans(arr)
-    print(left)
-    print(right)
+    n = int(input().strip())
+    arr = list(map(int, input().strip().split(' ')))
+    left, right = solution(arr)
+    for a, b in zip(left, right):
+        print('{} {}'.format(a, b))

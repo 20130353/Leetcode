@@ -15,14 +15,20 @@
     构建一个最大堆和一个最小堆，分别存储比中位数小的数和大的数。
     当目前两堆总数为偶数的时候，把数字存入最大堆，然后重排最大堆，如果最大堆的堆顶数字大于最小堆堆顶数字，
     则把两个堆顶数字交换，重排两堆，此时两堆数字总数为奇数，直接输出最大堆堆顶数字即为中位数；
+
+
     如果当前两堆总数为奇数的时候，把数字存入最小堆，重排最小堆，如果最大堆的堆顶数字大于最小堆堆顶数字，
     则把两个堆顶数字交换，重排两堆，此时两堆数字总数为偶数，取两堆堆顶数字做平均即为中位数
     最大堆堆顶元素要小于最小堆堆顶的元素，最大堆，堆顶元素最大，从大到小，最小堆堆顶元素最小，从小到大，这样的话，
     最大堆所有元素均小于最小堆了，中位数一定出现在两堆交替之间。
 
+    ！！！！
+    第偶数个，和左根比
+    第奇数个，和右根比
 '''
 
-def get_median(left,right,size):
+
+def get_median(left, right, size):
     if size == 0:
         return
     if left == None or len(data) == 0:
@@ -32,27 +38,27 @@ def get_median(left,right,size):
     max_heap(left)
     min_heap(right)
     # 如果小根堆的最大值 > 大根堆的最小值,说明两个堆不是顺序的 所有要交换直到两个堆都是顺序的
-    while(True):
+    while (True):
         if left[0] > right[0]:
-            left[0],right[0] = right[0],left[0]
+            left[0], right[0] = right[0], left[0]
             max_heap(left)
             min_heap(right)
         else:
             break
 
     if size & 1 == 0:
-        return (left[0] + right[0])/2
+        return (left[0] + right[0]) / 2
     else:
         return left[0]
 
-def min_heap(data):
 
+def min_heap(data):
     # 建立小根堆
     # 从最后一个父节点开始不断调整堆的数值
     size = len(data)
-    for i in range((size-1) // 2, -1, -1):
+    for i in range((size - 1) // 2, -1, -1):
         # 开始调整堆
-        while(True):
+        while (True):
             min = i
             left = 2 * i + 1
             right = 2 * i + 2
@@ -61,11 +67,12 @@ def min_heap(data):
             if right < size and data[min] > data[right]:
                 min = right
             if min != i:
-                data[min],data[i] = data[i],data[min]
+                data[min], data[i] = data[i], data[min]
                 i = min
             else:
                 break
     return
+
 
 def max_heap(data):
     # 建立小根堆
@@ -89,7 +96,6 @@ def max_heap(data):
     return
 
 
-
 def solution(data):
     left = []
     right = []
@@ -99,12 +105,12 @@ def solution(data):
         else:
             right.append(data[i])
 
-    median = get_median(left,right,len(data))
+    median = get_median(left, right, len(data))
     return median
 
-if __name__ == '__main__':
 
-    data = [3,4,2,5,7,9,1]
+if __name__ == '__main__':
+    data = [3, 4, 2, 5, 7, 9, 1]
     data = []
     data = [1]
     res = solution(data)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 公平划分--数字.py
+# @File  : 公平划分--数字--线性动规.py
 # @Author: smx
 # @Date  : 2019/8/17
 # @Desc  :

@@ -25,11 +25,9 @@ def solution(arr, w):
 
     if w > arr[0]:
         ans = solution(arr[1:], w - arr[0]) + solution(arr[1:], w)
-        # print('arr {}, w {}, ans {} '.format(arr, w, ans))
         return ans
     else:
         ans = solution(arr[1:], w)
-        # print('arr {}, w {}, ans {} '.format(arr, w, ans))
         return ans
 
 

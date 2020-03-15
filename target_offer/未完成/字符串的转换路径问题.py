@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : 字符串的转换路径问题--字符串.py
+# @File  : 字符串的转换路径问题--字符串--区间动规.py
 # @Author: smx
 # @Date  : 2019/8/13
 # @Desc  :

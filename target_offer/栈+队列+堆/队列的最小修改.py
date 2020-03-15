@@ -11,9 +11,11 @@ def solution(arr, n):
     if n == 1:
         return 0
 
-    for i in range(n - 1, -1, -1):
+    for i in range(n - 1, 0, -1):
         if arr[i] < arr[i - 1]:
             return i
+    return 0
+
 
 if __name__ == '__main__':
     n = int(input().strip())

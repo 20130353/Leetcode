@@ -28,7 +28,6 @@ def solution(string):
                 stack.pop()
             else:
                 key = stack.pop()
-
             res = ''
             for _ in range(num):
                 res += key

@@ -8,7 +8,6 @@
     给定一个字符矩阵,,判断是否存在一条包含字符串所有字符发路径
 '''
 
-
 '''
     反思：
     1. 他给定义的matrix是字符串，必须要使用i*cols+j的方式才能遍历
@@ -16,13 +15,13 @@
 
 '''
 
+
 class Solution:
 
     def __init__(self):
         self.dir = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
     def DFS(self, ans, map_, vis, i, j, m, n, index, path):
-
         if ans[0]:
             return
 
@@ -51,6 +50,5 @@ class Solution:
 
 
 if __name__ == '__main__':
-
     # print(Solution().hasPath("ABCESFCSADEE", 3, 4, "ABCCED"))
-    print(Solution().hasPath("ABCEHJIGSFCSLOPQADEEMNOEADIDEJFMVCEIFGGS",5,8,"SGGFIECVAASABCEHJIGQEM"))
+    print(Solution().hasPath("ABCEHJIGSFCSLOPQADEEMNOEADIDEJFMVCEIFGGS", 5, 8, "SGGFIECVAASABCEHJIGQEM"))

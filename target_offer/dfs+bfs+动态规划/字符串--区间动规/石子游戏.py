@@ -25,8 +25,8 @@ class Solution:
                     dp[i][j][1] = dp[i + 1][j][0]  # 变成先手！
                 else:
                     dp[i][j][0] = right
-                    dp[i][j][1] = dp[i][j - 1][0]
-        gap = dp[0][n - 1][0] - dp[0][n - 1][1]  # 变成先手！
+                    dp[i][j][1] = dp[i][j - 1][0] # 变成后手！
+        gap = dp[0][n - 1][0] - dp[0][n - 1][1]
         return gap >= 0
 
 

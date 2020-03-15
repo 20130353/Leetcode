@@ -32,9 +32,10 @@ def edit_distance(A, B):
         res1 = edit_distance(A[:-1], B)
         res2 = edit_distance(A, B[:-1])
         res3 = edit_distance(A[:-1], B[:-1])
-        # print('1,2,3:', res1, res2, res3)
         return min(res1, res2, res3) + 1
 
+# 最少编辑次数
+# dp[i][j]表示句子0-i到句子0-j的最少编辑距离
 class Solution:
     def editDis(self, a, b):
         n, m = len(a), len(b)

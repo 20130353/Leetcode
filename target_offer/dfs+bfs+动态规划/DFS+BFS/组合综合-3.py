@@ -5,7 +5,7 @@
 # @Date  : 2020/2/20
 # @Desc  :
 
-
+# 不重复的01背包
 class Solution:
     def DFS(self, n, k, vis, cur, cur_sum, pos, ans):
         if pos >= k:

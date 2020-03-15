@@ -6,6 +6,8 @@
 # @Desc  :
 
 # 使用一次！
+# 01背包
+
 class Solution:
     def DFS(self, arrs, n, vis, target, cur, cur_sum, ans):
         if cur_sum == target:

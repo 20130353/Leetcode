@@ -13,11 +13,14 @@ class Solution:
     def DFS(self, index, vis, res, total, ss, final_res):
         if index == total:
             final_res.append(res)
+
         for inx, each in enumerate(ss):
             if vis[inx] == False:
                 vis[inx] = True
                 res = ''.join([res, ss[inx]])
+
                 self.DFS(index + 1, vis, res, total, ss, final_res)
+
                 vis[inx] = False
                 res = res[:-1]
 

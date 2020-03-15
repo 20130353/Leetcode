@@ -6,7 +6,12 @@
 # @Desc  :
 
 # 最普通的方法：深度搜索，超时！
-# 超时-> 保存中间变量
+# 超时-> 保存中间变量!!!!!!!!
+# 超时-> 保存中间变量!!!!!!!!
+# 超时-> 保存中间变量!!!!!!!!
+# 超时-> 保存中间变量!!!!!!!!
+# 超时-> 保存中间变量!!!!!!!!
+# 超时-> 保存中间变量!!!!!!!!
 class Solution:
     def DFS(self, x, y, mat, m, n, cache):
         dir = [[0, 1], [0, -1], [1, 0], [-1, 0]]
@@ -37,7 +42,5 @@ class Solution:
 
 
 if __name__ == '__main__':
-    nums = [
-        [9]
-    ]
+    nums = [[9]]
     print(Solution().longestIncreasingPath(nums))

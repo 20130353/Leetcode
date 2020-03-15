@@ -5,7 +5,7 @@
 # @Date  : 2019/8/23
 # @Desc  :
 
-
+# 这是最简单暴力的做法，但是可能会超时！
 def dfs(arr, hp, sp, hp_up, sp_up, n, count, path):
     global min_count
 
@@ -13,7 +13,6 @@ def dfs(arr, hp, sp, hp_up, sp_up, n, count, path):
         return
 
     if n <= 0:
-        # print('count {}, path {}'.format(count, path))
         min_count = min(min_count, count)
         return
 

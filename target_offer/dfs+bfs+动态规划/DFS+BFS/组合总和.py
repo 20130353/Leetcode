@@ -5,6 +5,7 @@
 # @Date  : 2020/2/19
 # @Desc  :
 
+# 完全背包
 class Solution:
     # 被无限抓取使用！
     def DFS(self, arrs, n, target, cur, cur_sum, ans):
@@ -23,7 +24,6 @@ class Solution:
         ans = []
         self.DFS(arrs, len(arrs), target, [], 0, ans)
         return ans
-
 
 if __name__ == '__main__':
     candidates = [2, 3, 6, 7]

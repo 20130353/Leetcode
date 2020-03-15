@@ -16,16 +16,17 @@ class Solution:
         if j >= len(pat) and i < len(s):
             return
 
-        # 这两段可以合并！
+        # 这两段可以合并！--》没有必要把这个情况写出来！
         if pat[j] == '.' and j + 1 < len(pat) and pat[j + 1] == '*':
             self.dfs(i, j + 2, s, pat, flag)
             if flag[0]:
                 return
-            # 这一段可以写成不同*
+            # 这一段可以写成不去掉*
             for k in range(len(s) - i + 1):
                 self.dfs(i + k, j + 2, s, pat, flag)
                 if flag[0]:
                     return
+
         if j + 1 < len(pat) and pat[j + 1] == '*':
             if i < len(s):
                 self.dfs(i, j + 2, s, pat, flag)
@@ -37,6 +38,7 @@ class Solution:
                         i = i + 1
             else:
                 self.dfs(i, j + 2, s, pat, flag)
+
         if (i < len(s) and pat[j] == '.') or (i < len(s) and s[i] == pat[j]):
             self.dfs(i + 1, j + 1, s, pat, flag)
 
@@ -47,20 +49,13 @@ class Solution:
 
 
 # 反思:
-# 1. 值得肯定的是我刚开始做出来了一部分,但是缺点是我对于*
-# 能考虑的状况少了一部分,这个以后要注意!
+# 1. 值得肯定的是我刚开始做出来了一部分,但是缺点是我对于*能考虑的状况少了一部分,这个以后要注意!
 # 2. 数组索引的时候一定要看好索引大小,防止越界
-
 class Solution:
-
     def match(self, s, pattern):
-
         if len(s) == 0 and len(pattern) == 0:
             return True
 
-        # 因为当字符串已经为空,但是模式串不为空的时候,可能会存在匹配成功的情况
-        # if len(s) == 0 and len(pattern) != 0:
-        #     return False
         if len(s) != 0 and len(pattern) == 0:
             return False
 

@@ -21,7 +21,7 @@
 
 from collections import deque
 
-
+# 可以用深度优先遍历或者是广度优先遍历，还是可以双向深度或者广度优先遍历
 class Solution:
     def ladderLength(self, start_word, end_word, words):
         if not start_word or not end_word or not words: return 0

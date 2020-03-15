@@ -6,18 +6,18 @@
 # @Desc  :
 
 class Solution:
-    def DFS(self, digits, n, digits_dict, i, cur, ans):
-        if i >= n:
+    def DFS(self, digits, n, digits_dict, cur_pos, cur, ans):
+        if cur_pos >= n:
             if cur: ans.append(''.join(cur))
             return
 
-        if digits_dict[digits[i]]:
-            for each in digits_dict[digits[i]]:
+        if digits_dict[digits[cur_pos]]:
+            for each in digits_dict[digits[cur_pos]]:
                 cur.append(each)
-                self.DFS(digits, n, digits_dict, i + 1, cur, ans)
+                self.DFS(digits, n, digits_dict, cur_pos + 1, cur, ans)
                 cur.pop()
         else:
-            self.DFS(digits, n, digits_dict, i + 1, cur, ans)
+            self.DFS(digits, n, digits_dict, cur_pos + 1, cur, ans)
 
     def letterCombinations(self, digits):
         ans = []

@@ -7,7 +7,12 @@
 
 # 这道题有两个关键的地方：
 # 1. 从边界点到x，y点
-# 2. 减少for，改进超时问题
+# 2. 减少for，改进超时问题--》改成链表的简写形式，速度比较 map》list推导式》for循环
+# filter和map比较
+# filter：可以去掉元素
+# map只能在原来的元素上计算
+# 这两个功能不能混用！
+# 这个 讲解列表推导式非常清楚： https://blog.csdn.net/neweastsun/article/details/98535850
 
 # class Solution():
 #     def find_way(self, m, n, x, y, k):

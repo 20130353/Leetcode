@@ -6,23 +6,26 @@
 # @Desc  :
 
 # 不用copy的方法是每次传递都是新的元素
-# class Solution:
-#     def DFS(self, arrs, n, pos, cur, ans):
-#         if pos >= n:
-#             ans.append(cp.copy(cur))
-#             return
-#
-#         cur.append(arrs[pos])
-#         self.DFS(arrs, n, pos + 1, cur, ans)
-#         cur.pop()
-#
-#         self.DFS(arrs, n, pos + 1, cur, ans)
-#
-#     def subsets(self, arrs):
-#         ans = []
-#         self.DFS(arrs, len(arrs), 0, [], ans)
-#         return ans
-#
+# 为什么不用这方法？
+import copy as cp
+class Solution:
+    def DFS(self, arrs, n, pos, cur, ans):
+        if pos >= n:
+            ans.append(cp.copy(cur))
+            return
+
+        cur.append(arrs[pos])
+        self.DFS(arrs, n, pos + 1, cur, ans)
+
+        cur.pop()
+        self.DFS(arrs, n, pos + 1, cur, ans)
+
+    def subsets(self, arrs):
+        ans = []
+        self.DFS(arrs, len(arrs), 0, [], ans)
+        return ans
+
+
 class Solution:
     # 这样写就和全排列的思路是一样的！
     def DFS(self, arrs, n, start, cur, ans):

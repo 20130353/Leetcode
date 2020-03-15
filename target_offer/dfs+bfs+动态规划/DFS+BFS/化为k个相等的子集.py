@@ -5,28 +5,6 @@
 # @Date  : 2020/2/19
 # @Desc  :
 
-# 思考一个问题：什么时候使用暴力穷举？
-# 思考一个问题：什么时候使用暴力穷举？
-# 思考一个问题：什么时候使用暴力穷举？
-# 思考一个问题：什么时候使用暴力穷举？
-# 思考一个问题：什么时候使用暴力穷举？
-# 形成组合，且组合内元素无顺序！
-# class Solution:
-#     # 只能过143/149 case
-#     def canPartitionKSubsets(self, arrs, k):
-#         if not arrs or k > len(arrs) or sum(arrs) % k != 0:
-#             return False
-#         target = sum(arrs) / k
-#         arrs = sorted(arrs)
-#         ans = [0 for _ in range(k)]
-#         for i in range(len(arrs) - 1, -1, -1):
-#             if arrs[i] > target:
-#                 return False
-#             min_i = ans.index(min(ans))
-#             if ans[min_i] + arrs[i] > target:
-#                 return False
-#         return True
-
 class Solution:
     def DFS(self, arrs, n, target, k, ans, pos, flag):
         if flag[0]:
@@ -41,6 +19,8 @@ class Solution:
         if sum((arrs[pos:])) > (target - min(ans)) * k:
             return
 
+        # 其实和分割等和子集是一样，等和子集就是k=2的情况
+        # 这个数字一定被放入k个子集和中的一个
         for j in range(k):
             if ans[j] + arrs[pos] <= target:
                 ans[j] += arrs[pos]
@@ -50,17 +30,20 @@ class Solution:
     def canPartitionKSubsets(self, arrs, k):
         if not arrs or k > len(arrs) or sum(arrs) % k != 0:
             return False
+
+        # 这一段和分割等和子集是一样的！
         target = sum(arrs) / k
         arrs = sorted(arrs)
         new_arrs = []
         for i in range(len(arrs) - 1, -1, -1):
             if arrs[i] > target:
                 return False
-            # 这个没想到！个没想到！个没想到！个没想到！个没想到！
             if arrs[i] != target and arrs[i] != 0:
                 new_arrs.append(arrs[i])
             if arrs[i] == target:
                 k -= 1
+
+        # DFS开始
         ans = [0 for _ in range(k)]
         flag = [False]
         self.DFS(new_arrs, len(new_arrs), target, k, ans, 0, flag)

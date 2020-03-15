@@ -6,6 +6,12 @@
 # @Desc  :
 
 import copy as cp
+
+
+# 最后结果可以有重复元素
+# 时间复杂度：单次1*次数n!=O(n!),属于非常大的时间复杂度
+# 空间复杂度：O(n)*次数n!=O(n!)
+
 class Solution:
     def DFS(self, arrs, vis, n, pos, cur, ans):
         if pos >= n:
@@ -24,7 +30,7 @@ class Solution:
         ans = []
         n = len(arrs)
         vis = [0 for _ in range(n)]
-        self.DFS(arrs, vis, len(arrs), 0, [], ans)
+        self.DFS(arrs, vis, n, 0, [], ans)
         return ans
 
 

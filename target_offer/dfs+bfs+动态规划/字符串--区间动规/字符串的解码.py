@@ -6,6 +6,7 @@
 # @Desc  :
 
 # 不知道为什么暴力解法就是不过！
+# 只要不是遍历所有情况就可以直接用动规，比暴力搜索 时间效率高很多！
 # def solution(string, path):
 #     ans = re.findall(r'\d+', string)
 #     if len(ans) != 1:
@@ -37,6 +38,7 @@
 
 # 存在的问题：1. 存在的0的状况没有考虑进去
 # 存在的问题：没有考虑26的情况
+# 求方案数量可以直接用动归！
 def solution(string):
     if len(string) == 0 or string == '0':
         return 0

@@ -10,6 +10,28 @@
 # 分清楚是子集重复是指元素是相同的。
 # 去重的两大要素是map和排序
 
+import copy as cp
+
+
+class Solution:
+    def DFS(self, arrs, n, pos, cur, ans):
+        if pos >= n:
+            if cur not in ans:
+                ans.append(cp.copy(cur))
+            return
+
+        cur.append(arrs[pos])
+        self.DFS(arrs, n, pos + 1, cur, ans)
+
+        cur.pop()
+        self.DFS(arrs, n, pos + 1, cur, ans)
+
+    def subsets(self, arrs):
+        ans = []
+        self.DFS(arrs, len(arrs), 0, [], ans)
+        return ans
+
+
 class Solution:
     # 这样写就和全排列的思路是一样的！
     def DFS(self, arrs, n, start, cur, ans):

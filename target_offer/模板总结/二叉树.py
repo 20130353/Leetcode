@@ -5,7 +5,7 @@
 # @Date  : 2020/2/14
 # @Desc  :
 
-
+# 这三种遍历的时间复杂度都是O(n)，因为要遍历所有的节点
 
 class Node:
     def __init__(self, val):
@@ -52,7 +52,7 @@ class Solution:
         return res
 
     def in_vis(self, root):
-
+        # 唯一中序遍历需要考虑清楚：先放左边的节点，然后到左边节点出来的时候遍历右边的节点
         if not root:
             return []
 

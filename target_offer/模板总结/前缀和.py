@@ -6,11 +6,27 @@
 # @Desc  :
 
 # 最大正方形
+# numpy和list的区别：
+# 1. list遍历只能使用遍历和c++数组的方式；numpy可以使用索引，tuple索引,eg:a[1,1]，a[1,:],我觉得python的numpy更像matlab语言的使用习惯
+# 2. list存放元素内容可以不相同，numpy存放内容一定要相同
+# 心得：计算正方形或者是任何形状或者数组的是否合适，都是这一段减去形状！
+
+import numpy as np
 class Solution:
+    # 这里确定matrix的形式，是一维数组还是二维数组？还是两者都可以？
     def maximalSquare(self, matrix):
+
         if not matrix:
             return 0
 
+        # 判断数组维度
+        matrix = np.array(matrix)
+
+        # 一维数组
+        if np.ndim(matrix)==1:
+            return int(max(matrix))
+
+        # 二维数组
         m, n = len(matrix), len(matrix[0])
         # 计算矩阵前缀和
         sum_m = [[0 for _ in range(n + 1)] for _ in range(m + 1)]

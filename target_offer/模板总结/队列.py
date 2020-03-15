@@ -16,10 +16,10 @@ from collections import Counter
 import queue as Q
 
 
+# 优先队列可以对tuple对象排序
 class Solution:
     def leastInterval(self, tasks, n):
         count = Counter(tasks)
-        print(count)
         queue = Q.PriorityQueue()
         for key, value in count.items():
             queue.put(Task(value, key))
@@ -30,7 +30,6 @@ class Solution:
             new_queue = Q.PriorityQueue()
             while not queue.empty():
                 each = queue.get()
-                print(each.priority, each.name)
                 if t > 0:
                     each.priority -= 1
                     if each.priority > 0:

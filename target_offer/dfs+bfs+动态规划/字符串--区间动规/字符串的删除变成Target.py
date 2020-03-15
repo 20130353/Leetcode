@@ -10,14 +10,14 @@
 # 但是为什么没有j-1 -》 因为目标是T，不能修改T
 
 class Solution(object):
-    def numDistinct(self, s, t):
-        m, n = len(s), len(t)
+    def numDistinct(self, s, target):
+        m, n = len(s), len(target)
         dp = [[0 for j in range(n + 1)] for i in range(m + 1)]
         for i in range(0, m + 1):
             dp[i][0] = 1
         for i in range(1, m + 1):
             for j in range(1, n + 1):
                 dp[i][j] = dp[i - 1][j]
-                if s[i - 1] == t[j - 1]:
+                if s[i - 1] == target[j - 1]:
                     dp[i][j] += dp[i - 1][j - 1]
         return dp[m][n]

@@ -15,28 +15,24 @@ class Solution(object):
                 dp[i] = dp[i - 1] + 2
                 if j - 1 >= 0:
                     dp[i] += dp[j - 1]  # 加上之前的部分!
-        # for each in dp:
-        #     print(each)
         return True if (max(dp) == n) else False
 
-
-# AC
-# class Solution(object):
-#     # 之前存在的问题：实现不需要栈，就需要记录一下（的数量
-#     def validParentheses(self, string, n):
-#         if n & 1 == 1:
-#             return False
-#         num = 0
-#         for i in range(n):
-#             if string[i] == '(':
-#                 num += 1
-#             elif string[i] == ')':
-#                 num -= 1
-#                 if num < 0:
-#                     return False
-#             else:
-#                 return False
-#         return True if num == 0 else False
+class Solution(object):
+    # 实现不需要栈，就需要记录一下（的数量
+    def validParentheses(self, string, n):
+        if n & 1 == 1:
+            return False
+        num = 0
+        for i in range(n):
+            if string[i] == '(':
+                num += 1
+            elif string[i] == ')':
+                num -= 1
+                if num < 0:
+                    return False
+            else:
+                return False
+        return True if num == 0 else False
 
 
 if __name__ == '__main__':

@@ -5,16 +5,20 @@
 # @Date  : 2020/2/14
 # @Desc  :
 
-# 字符串的解压缩
 
 # 单调栈和双指针的区别就是弹出东西不一样:
 # 单调栈弹出后进的元素
 # 双指针弹出首先进的元素
 
+# 字符串的解压缩
+# 题目的意思是(ab)3bb4变成abababbbbbb，表示将数字之前的字母组合变成原来的样子
+# 时间复杂度：单次是n*次数n=O(n^2)
+# 空间复杂度：O(n)
 def solution(string):
     if not string or len(string) <= 0:
         return ''
     i = 0
+    # 一般字符串需要注意的是数字要保证多个字母组成一个数字的情况
     stack = []
     while i < len(string):
         if string[i].isdigit():
@@ -41,6 +45,8 @@ def solution(string):
     return stack
 
 # 接雨水
+# 时间复杂度：单次n*次数n=O(n^2)
+# 空间复杂度：O(n)
 class Solution:
     def trap(self, height):
         len_h = len(height)

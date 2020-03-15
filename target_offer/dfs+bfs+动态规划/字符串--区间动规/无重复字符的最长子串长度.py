@@ -16,7 +16,7 @@ def check(data, char):
             return False
     return True
 
-
+# 感觉这个可用双指针来做
 def get_substring(data):
     if len(data) <= 0 or data == None:
         return 0

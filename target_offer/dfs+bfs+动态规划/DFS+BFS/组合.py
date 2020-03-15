@@ -7,20 +7,24 @@
 
 import copy as cp
 
+# 组合元素个数等于指定值
+# 如果用组合数公式，可以知道个数，但是不知道具体的组合结果！
 
+# 01背包
 class Solution:
     # 没有重复元素
-    def DFS(self, n, k, cur, pos, ans):
-        if cur.__len__() == k:
-            ans.append(cp.copy(cur))
+    def DFS(self, n, target, cur_arr, pos, ans):
+        if cur_arr.__len__() == target:
+            ans.append(cp.copy(cur_arr))
             return
         if pos >= n:
             return
 
-        cur.append(pos + 1)
-        self.DFS(n, k, cur, pos + 1, ans)
-        cur.pop()
-        self.DFS(n, k, cur, pos + 1, ans)
+        cur_arr.append(pos + 1)
+        self.DFS(n, target, cur_arr, pos + 1, ans)
+
+        cur_arr.pop()
+        self.DFS(n, target, cur_arr, pos + 1, ans)
 
     def combine(self, n, k):
         ans = []

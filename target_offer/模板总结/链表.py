@@ -17,7 +17,6 @@ class ListNode:
         self.val = x
         self.next = None
 
-
 # 将后n个插入前n个
 class Solution:
     # 分割操作：将链表分成相等的两部分。
